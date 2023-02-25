@@ -1,0 +1,391 @@
+    @charset "UTF-8";
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        background: white;
+      }
+      
+      a:link {
+        color: #333;
+        text-decoration: none;
+      }
+      
+      a:visited,
+      a:hover,
+    
+      /*헤더 부분*/
+      .wrap {
+        background-color: white;
+      }
+      
+      header {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 25px 0;
+        font-size: 30px;
+        color: #555;
+        position: relative;
+      }
+      
+      /*찾기 이미지*/
+      header img {
+        width: 40px;
+        position: absolute;
+        top: 25px;
+        right: 0;
+        z-index: 10;
+        opacity: 0.5;
+      }
+      
+      header img:hover {
+        opacity: 1;
+      }
+      
+      #dm_ul {
+        min-width: 300px;
+        position: absolute;
+        right: 100px;
+        top: 20px;
+      }
+      
+      .dropmenu ul ul {
+        position: absolute;
+        display: none;
+        z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+        background: white;
+        padding: 0 20px 10px;
+        transform: translate(-20px, 20px);
+      }
+      
+      .dropmenu ul ul li {
+        display: block;
+      }
+      
+      .dropmenu ul li {
+        display: inline-block;
+      }
+      
+      .dropmenu ul li a {
+        display: block;
+        width: 150px;
+        color: #555;
+        font-size: 0.9rem;
+        line-height: 43px;
+        text-decoration: none;
+      }
+      
+      .dropmenu ul li a:hover {
+        color: #000;
+      }
+      
+      /*찾기 이미지*/
+      header img {
+        width: 40px;
+        position: absolute;
+        top: 25px;
+        right: 0;
+        z-index: 10;
+        opacity: 0.5;
+      }
+      
+      header img:hover {
+        opacity: 1;
+      }
+      
+      #dm_ul {
+        min-width: 300px;
+        position: absolute;
+        right: 100px;
+        top: 20px;
+      }
+      
+      .dropmenu ul ul {
+        position: absolute;
+        display: none;
+        z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+        background: white;
+        padding: 0 20px 10px;
+        transform: translate(-20px, 20px);
+      }
+      
+      .dropmenu ul ul li {
+        display: block;
+      }
+      
+      .dropmenu ul li {
+        display: inline-block;
+      }
+      
+      .dropmenu ul li a {
+        display: block;
+        width: 150px;
+        color: #555;
+        font-size: 0.9rem;
+        line-height: 43px;
+        text-decoration: none;
+      }
+      
+      .dropmenu ul li a:hover {
+        color: #000;
+      }
+    /* ------------------------------------------------------------------ */
+    .container-all{
+        padding: 0px 50px 0px 50px; height: 800px;
+    }
+    .container{ 
+        width: 100%; height: 800px;
+       position: relative;
+        top: 30px;
+       
+    }
+    /* 지역명 */
+    .whereBox{
+        width: 100%; height: 100px;
+        
+        background: url(../img/travelad_img/seoul.jpg)0 0 no-repeat;
+
+        border-radius: 2px;
+        margin-bottom: 3px;
+    }
+    .whereBox_title{
+        color: #fff; line-height: 130px; margin-left: 20px;
+    }
+    /* BODY */
+    .contentBox{display: flex;}
+
+    /* 필터상자 */
+    .filterBox{ box-shadow:3px 3px 5px gray; 
+        width: 230px; height: 656px;
+        background-color: teal;
+        border-radius: 3px;
+        color: #fff;
+    }
+    /* 필터날짜 */
+    .today{ font-size: 20px; text-align: left;
+        width: 100%; height: 50px; line-height: 50px;
+        padding-top: 15px; margin-top: 15px; margin-left: 8px;
+    }
+    /* 필터 출발지 도착지 */
+    .promotion{ 
+        width: 230px; height: 200px;
+    }
+    .promotion-place{  
+        display: flex; height: 150px;  padding: 0px 15px 0px 30px;}
+    .roote{ text-align: center; background-color: #fff; color: #004932; border-radius: 5px;
+        width: 60px; height: 27px; margin-top: 30px; font-size: 20px;
+       
+    }
+    
+    .roote-clear{  padding-top: 10px;
+        width: 50px; height: 50px; margin-top: 21px; text-align: center;
+    } 
+    
+    .place{display: block; margin-top:15px; color: #fff; letter-spacing: -2px;width: 80px; text-align: left;}
+    
+    /* 필터 시간 */
+    .delay{ padding-top: 10px;
+        width: 100%; height: 20px; display: block; text-align: right;
+        font-size: 14px; margin-bottom: 7px;
+    }
+    /* 필터 거리 */
+    .distance{  text-align: right;
+        width: 100%; height: 20px; display: block;
+        font-size: 14px;
+    }
+    /* 필터 요금 */
+    .payInfo{
+        width: 100%; height: 100%; 
+    }
+    .nomalPay{text-align: right; margin-top: 30px;}
+    .payInfo-text{ text-align: left; position: relative; top: 25px; 
+        
+    }
+    .pay-clear{width: 100%; height: 10px; display: block;}
+    dt{text-align: left;}
+    
+    dd{text-align: right; position: relative;top: -25px;}
+
+    /* 버스시간표 */
+    .schedulBox{ border: 2px solid #e6e6e6;
+        width: 100%; height: 656px; min-height: 640px; max-width: 1635px;
+        margin-left: 50px; border-radius: 3px;
+        position: relative; box-shadow: 3px 3px 5px gray; 
+    }
+    /* 버스날짜박스 */
+    .calenderBox{ border-bottom: 2px solid #e6e6e6;
+         height: 80px;
+        position: relative; 
+    }
+    .calenderBox::after{display: block; content: ""; clear: both;}
+
+    /* 새로고침 */
+    .refreshBox{ 
+        float: none;
+        width: 88px; height: 100%;
+        position: absolute; top: 0; left: 0;
+        z-index: 100;
+        padding: 10px; box-sizing: border-box;
+    }
+    .refresh{
+        width: 65px;height: 100%;
+        background-color: #f3f4f6;
+        border: 0; cursor: pointer;
+        position: relative; display: inline-block; vertical-align: middle; line-height: 1.2;
+        
+    }
+    .refresh-icon{cursor: pointer;}
+    
+    /* 버스날짜텍스트 */
+    .date{
+        float: left; position: relative; display: block;
+        height: 100%; width: 100%;
+        font-size: 0; 
+        text-align: center;  
+    }
+    .date-text{ 
+        font-size: 22px; font-weight: bold; text-align: center; line-height: 65px;
+    }
+    /* 버스달력이미지 */
+    .date-calender{
+        position: absolute; top: 15px; right: 15px; width: 50px; height: 50px; z-index: 10;
+        cursor: pointer; 
+    }
+    
+    .calender{ 
+         display: inline-block; position: absolute; top: 0;right: 0;
+         background: #f3f4f6; 
+         width: 65px; height: 65px; margin: 8px; line-height: 40px;}
+
+    /* 버스 body */
+    .detailSchedulBox{height: 573px; position: relative; display: block;}
+    /* night daytime */
+    .timetableBox{ border-right:1px solid #e6e6e6; 
+        position: absolute; float: none;
+        top: 0; left: 0 ; z-index: 100;
+        width: 65px; height: 100%;
+        list-style: none; display: block;
+    }
+    .timetableBox::before{
+        display: inline-block; content: ''; position: absolute; top: 5px; left: 8px;
+    }
+    .night{ 
+        position: relative; margin-top: 8px; padding-right: 8px; 
+        box-sizing: border-box; margin-top: 15px;
+       
+    }
+    
+    .daytime{position: relative; margin-top: 8px; padding-right: 8px; box-sizing: border-box; margin-top: 15px;}
+    .night::before{ 
+        position: absolute; display: inline-block; content: '';
+        top: 5px;left: 8px;
+      
+        background: url(../html/bus/night.png) 0 0 no-repeat;
+        background-size: auto 100%;
+        width: 14px; height: 14px;
+    }
+    .daytime::before{
+        background-image: url(../html/bus/daytime.png) 0 0 no-repeat;
+        background-size:100%;
+        width: 16px; height: 16px;
+    }
+    .date-time{
+        display: block;
+        padding: 2px 8px 2px 0;
+        font-size: 14px; text-align: right;
+        color: #68b3ce;
+        box-sizing: border-box;
+        
+    }
+    /* 버스세부스케쥴 */
+    .busTime{ 
+        width: 100%; height: 575px;
+        box-sizing: border-box;
+        padding-left: 65px; margin-top: -573px;
+    }
+    .busTime::before{
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 64px;
+        
+        width: 1px;
+        height: 100%;
+    }
+    /* 버스타임 헤더 */
+    .busTime-head{
+        display: table; width: 100%; min-height: 33px; padding: 0 15px 0 20px;
+        border-bottom: 1px solid #e6e6e6;   box-sizing: border-box; font-size: 15px;
+        line-height: 1.5; 
+    }
+    .clear2{width: 100px; text-align: left; vertical-align: middle; display: table-cell;}
+    .busStart{width: 200px; text-align: left; vertical-align: middle; display: table-cell;}
+    .busFind{width: 220px; display: table-cell; text-align: left; vertical-align: middle;}
+    .busGrade{width: 200px; display: table-cell; text-align: left; vertical-align: middle;}
+    .busTemp{width: 220px; display: table-cell; text-align: left; vertical-align: middle;}
+    .busRemain{width: 150px; display: table-cell; text-align: left; vertical-align: middle;}
+    .busClear{width: auto; display: table-cell; text-align: left; vertical-align: middle;}
+    /* 버스시간 디테일 */
+    .busTime-detail{
+        height: 540px;
+        margin-left: 20px;
+        overflow-y: auto;
+    }
+    .busTd{
+        position: relative; border-bottom: 1px solid #e6e6e6;
+    }
+    .busTd a{ height: 54px; display: table; width: 100%; position: relative; text-decoration: none;
+        margin-left: 92px;
+    }
+    /* 디테일 출발 */
+    .start-time{
+        width: 213px; font-size: 18px;  display: table-cell; text-align: left; 
+    }
+    /* 고속사 */
+    .bus_com{width: 215px; display: table-cell; padding-top: 15px; vertical-align: top; line-height: 1;
+    text-align: left; }
+    .dongbu{
+        display: inline-block; text-align: left; vertical-align: middle;
+        width: 80px; height: 40px; font-size: 0px; 
+        background: url(../html/bus/bus_dongbu.png) 0 0 no-repeat;   
+    }
+    .dongyang{
+        display: inline-block; text-align: left; vertical-align: middle;
+        width: 80px; height: 40px; font-size: 0px; 
+        background: url(../html/bus/dongyangbus.png) 0 0 no-repeat;   
+    }
+    .gumho{
+        display: inline-block; text-align: left; vertical-align: middle;
+        width: 80px; height: 40px; font-size: 0px; 
+        background: url(../html/bus/gumhobus.png) 0 0 no-repeat;   
+    }
+    .jungang{
+        display: inline-block; text-align: left; vertical-align: middle;
+        width: 80px; height: 40px; font-size: 0px; 
+        background: url(../html/bus/gumhobus.png) 0 0 no-repeat; 
+    }
+    .hanil{
+        display: inline-block; text-align: left; vertical-align: middle;
+        width: 80px; height: 40px; font-size: 0px; 
+        background: url(../html/bus/hanilbus.png) 0 0 no-repeat; 
+    }
+    /* 등급 */
+    .woodung{
+        width: 145px; font-size: 14px; line-height: 50px;
+    }
+
+    .moonMak{display: inline-block; font-size: 8px;  }
+    /* 할인 */
+    .temp{display: table-cell; width: 165px;}
+    /* 잔여석 */
+    .remain{padding-right: 30px; text-align: left; box-sizing: border-box; width: 150px;}
+    /* 선택 */
+    .status{width: auto; font-size: 13px;}
+    .status-icon{padding-right: 11px; background: url(../html/bus/timetable_arrow.png) right center no-repeat; color: #68b3ce;}
+    
+    
