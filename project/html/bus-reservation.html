@@ -27,7 +27,7 @@
     <style>
         
 
-* {
+        * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,7 +37,11 @@ body {
   font-family: "Noto Sans KR", sans-serif;
   background: white;
 }
-
+.clearfix{
+      content:'';
+      display:block;
+      clear:both;
+}
 a:link {
   color: #333;
   text-decoration: none;
@@ -48,23 +52,48 @@ a:hover,
 a:active {
   color: #333;
 }
-
+.nav-search-container{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    }
+    .nav-search-input{
+      border-radius: 10px;
+      width: 100%;
+      height: 30px;
+      font-size: 15px;
+      border: 2px solid black;
+      outline: 0;
+      line-height: 30px;
+    }
+    .nav-search .search-btn{
+        position: absolute; width: 20px; height: 20px; background: none;
+        color: rgb(255, 255, 255); border: 0; cursor: pointer;
+        top: 15px; bottom: 0px; right:20px;
+    }
+    .nav-search img{  
+      width: 20px; height: 20px;
+      margin-bottom: 0px;
+      margin-left: 15px;
+    }
 /*헤더 부분*/
 .wrap {
   background-color: white;
 }
 
 header {
-  width: 1000px;
+  /* width: 100%; */
+  min-width: 1000px;
   margin: 0 auto;
   padding: 25px 0;
   font-size: 30px;
   color: #555;
   position: relative;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
 }
 
 /*찾기 이미지*/
-header img {
+/* header input {
   width: 40px;
   position: absolute;
   top: 25px;
@@ -75,7 +104,7 @@ header img {
 
 header img:hover {
   opacity: 1;
-}
+} */
 
 #dm_ul {
   min-width: 300px;
@@ -91,6 +120,7 @@ header img:hover {
   background: white;
   padding: 0 20px 10px;
   transform: translate(-20px, 20px);
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
 }
 
 .dropmenu ul ul li {
@@ -103,7 +133,7 @@ header img:hover {
 
 .dropmenu ul li a {
   display: block;
-  width: 150px;
+  width: 130px;
   color: #555;
   font-size: 0.9rem;
   line-height: 43px;
@@ -113,6 +143,7 @@ header img:hover {
 .dropmenu ul li a:hover {
   color: #000;
 }
+
 
 /* 헤더 끝라인---------------------------------- */
 li{list-style: none;}
@@ -374,47 +405,57 @@ height: 30px;  width: 30px;
  </style>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-          <a href="#">
-            <p>LOGO</p>
-          </a>
-          <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt="">
-          <nav>
-            <div class="dropmenu">
-              <ul id="dm_ul">
-                
-                <li><a href="#">국내숙소</a>
-                  <ul>
-                    <li><a href="#">모텔</a></li>
-                    <li><a href="#">호텔</a></li>
-                    <li><a href="#">게스트하우스</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">레저/전시</a>
-                  <ul>
-                    <li><a href="#">레저</a></li>
-                    <li><a href="#">전시</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">교통</a>
-                  <ul>
-                    <li><a href="#">예약하기</a></li>
-                    <li><a href="#">예약확인</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">더보기</a>
-                  <ul>
-                    <li><a href="#">비회원 에약</a></li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">qna</a></li>
-                  </ul>
-                </li>
-                <li><a href="#" class="nav-login">로그인</a>
-                </li>
+  <div class="wrap">
+    <header>
+      <a href="#">
+        <p><img src="../img/travel.png" alt="" style="width: 50px; height: 50px;"></p>
+      </a>
+      
+      <!-- <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt=""> -->
+      <nav>
+        <div class="dropmenu">
+          <ul id="dm_ul">
+            
+            <li><a href="#">국내숙소</a>
+              <ul>
+                <li><a href="#">모텔</a></li>
+                <li><a href="#">호텔</a></li>
+                <li><a href="#">게스트하우스</a></li>
               </ul>
-          </nav>
-        </header>
+            </li>
+            <li><a href="#">레저/전시</a>
+              <ul>
+                <li><a href="#">레저</a></li>
+                <li><a href="#">전시</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교통</a>
+              <ul>
+                <li><a href="../html/bus-reservation.html">예약하기</a></li>
+                <li><a href="#">예약확인</a></li>
+              </ul>
+            </li>
+            <li><a href="#">더보기</a>
+              <ul>
+                <li><a href="#">비회원 에약</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">qna</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="nav-login">로그인</a>
+            </li>
+            <li>
+              <div class="nav-search">
+              <form action="" class="nav-search-container">
+                <input type="text" class="nav-search-input" placeholder="검색">
+                <button type="submit" class="search-btn"><img src="../img/search.png" alt="버튼"></button>
+            </form>
+            </div >
+            </li>
+          </ul>
+      </nav>
+    </header>
       </div>
       <!-- 헤더 -->
     <div class="container">
@@ -426,7 +467,7 @@ height: 30px;  width: 30px;
             <div class="busReservationBox">
               <h2 class="busReservation_title">고속버스 승차권 조회</h2>
               <div class="bus_title_imgBox">
-                <img src="../img/bus/busicon.png " alt="" class="bus-img">   
+                <img src="../html/bus/busicon.png " alt="" class="bus-img">   
                 <ul class="bus_reser">
                   <li class="bus-startDay respace">
                     <span class="start_arrow"></span>
@@ -476,7 +517,7 @@ height: 30px;  width: 30px;
             <div class="trainReservatoinBox">
               <h2 class="trainReservation_title">기차 승차권 조회</h2>
               <div class="train_title_imgBox">
-              <img src="../img/bus/train_icon.png " alt="" class="train-img">   
+              <img src="../html/bus/train_icon.png " alt="" class="train-img">   
               <ul class="train_reser">
                 <li class="bus-startDay respace">
                   <span class="start_arrow"></span>
@@ -610,6 +651,12 @@ height: 30px;  width: 30px;
 
 
     <script>
+      $(".dropmenu ul li").hover(function() {
+  $(this)
+    .find("ul")
+    .stop()
+    .fadeToggle(300);
+});
         let cookie="";
         let all =["가평","간성","감곡","강구","강릉시외터미널","강진(전남)","개양(진주)","거제(고현)","거진","거창","경북대(상주)","경북도청","경북도청(신)","경산","경상대(칠암)","경주고속","경주시외","계룡금암","고금","고덕","고령","고북","고성(경남)","고양(백석)","고양(화정)","고창","고천","고한사북공영","고흥","공도","공주","공주(산성)","관산","광명","광명(철산역)","광양","광주(경기)","광주(유·스퀘어)","광천(충남)","괴산","구례","구리","구미","구미공단","구미복지","군산","군산고속","군위","군포","금산","금촌","기지시","기흥역","김대중컨벤션센터","김제","김천","김천부곡한남","김포공항","김해","김해공항","나로도","나주","나주혁신도시","낙산","남교","남선(신도안)","남악","남악도청","남원","남지","남청주","남해","내포","노고단(성삼재)","녹동","논산","단양상진","담양","당목","당진","대구공항","대구대","대구북부","대구서부","대소","대야","대의","대전도룡","대전복합","대전서남부","대전청사(선사유적)","대전청사공항(선사유적)","덕산(산청)","덕산스파","덕진동","도리원","동광양","동대구","동두천","동서울","동송","동영천IC정류장","동학사","동해","땅끝","마산","마산남부","만리포","목포","무안(전남)","무주","문경","문장","물치","미탄","밀양","배둔","배방정류소","백담사","벌교","보령(대천)","보성","보은","봉강교","봉화(경북)","부곡","부산동래","부산동부","부산서부(사상)","부산해운대","부안","부여","부천","북대전IC","북청주(청주대)","사천","사천공항","사천시청(용현)","산청","삼가","삼성","삼척","삼천포","삼호","삽교천","상봉","상주시외","서대구역","서산","서상(남덕유산)","서수원","서울남부","서천","서현리","석곡","성남","성전","성주","세마역(오산)","세종","세종청사","속리산","속초","송도국제교","송도환승센터","송정역","송탄","수안보","수원터미널","순창","순천","순천신대지구(CGV)","시지","시흥","신갈(용인)","신남","신례원","신반","신창","신평","쏠비치진도","아산(온양)","아주대","안면도","안산터미널","안성","안양","안양역","안의","안중","안흥","알펜시아","양구","양구정중앙","양산","양양","양양국제공항","양주역","언양","엄사","여수","여주","여천","연천","영광","영덕","영동","영산(경남)","영암","영양","영월","영주","영천","영통","영해","예산","예천","예천삼거리","오산","오색","오수","오창산단","옥과","온정","옹천","와수리","완도","완산동","완주혁신도시","용계","용원(녹산,명지)","용인","우만동","운교","운남","운산","운정(경기)","울산","울산고속","울산공항","울산신복","울진","원광대학교 앞","원동","원주","원지","원통","월곶삼거리","유성시외","음암","의령","의성","의정부","이천","익산","익산IC","익산고속","익산왕궁","인월","인제","인천","인천공항1터미널","인천공항2터미널","일동","임계","임실","임자(대광)","자운대","장계","장성","장수","장승포","장신대","장유","장유(환승)","장평","장항","전북(완주)혁신도시","전주(리무진터미널)","전주대","전주시외터미널","점촌","정선","정읍","제천","조치원","좌천","주문진","주왕산","죽전","죽전(경전)","중산리","지리산(백무동)","진도","진보","진부","진안","진영","진주","진주","진주","진주","진주(개양)","진주(경남)","진주혁신도시","진천","진해","진해경찰서","창기리","창녕","창원","창원남산","창원역","천안","천안아산(KTX)역","청도(경북)","청송","청양","청자도요지","청주","청주공항","청주북부터미널","청주사창","청평","춘양","춘천","충주","칠원예곡","칠원읍","코리아텍","코엑스(도심공항)","태백","태안","통영","평창","평택","평택대","평해","포항","풍기IC","하남BRT","하동","하양","하조대","한서대","함안가야","함안군북(39사단)","함양","함창","함평","합덕","합천","해남","해미","현풍","호계동","호남제일문","호산","홍농","홍성","홍천","화개공용","화천","횡계","횡성","효문","후포"];
         let sudo =["광주(유·스퀘어)","김대중컨벤션센터","김포공항","김해공항","대구공항","대구북부","대구서부","대전도룡","대전복합","대전서남부","대전청사(선사유적)","대전청사공항(선사유적)","동대구","동서울","부산동래","부산동부","부산서부(사상)","부산해운대","북대전IC","상봉","서대구역","서울남부","세종","세종청사","송도국제교","송도환승센터","송정역","시지","언양","용계","울산","울산고속","울산공항","울산신복","유성시외","인천","인천공항1터미널","인천공항2터미널","자운대","조치원","좌천","코엑스(도심공항)","현풍","효문"];
