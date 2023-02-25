@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+  <title>메인</title>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style type="text/css"></style>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: white;
+}
+.clearfix{
+      content:'';
+      display:block;
+      clear:both;
+}
+a:link {
+  color: #333;
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: #333;
+}
+.nav-search-container{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    }
+    .nav-search-input{
+      border-radius: 10px;
+      width: 100%;
+      height: 30px;
+      font-size: 15px;
+      border: 2px solid black;
+      outline: 0;
+      line-height: 30px;
+    }
+    .nav-search .search-btn{
+        position: absolute; width: 20px; height: 20px; background: none;
+        color: rgb(255, 255, 255); border: 0; cursor: pointer;
+        top: 15px; bottom: 0px; right:20px;
+    }
+    .nav-search img{  
+      width: 20px; height: 20px;
+      margin-bottom: -11px;
+      margin-left: 15px;
+    }
+/*헤더 부분*/
+.wrap {
+  background-color: white;
+}
+
+header {
+  /* width: 100%; */
+  min-width: 1000px;
+  margin: 0 auto;
+  padding: 25px 0;
+  font-size: 30px;
+  color: #555;
+  position: relative;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+/*찾기 이미지*/
+/* header input {
+  width: 40px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+header img:hover {
+  opacity: 1;
+} */
+
+#dm_ul {
+  min-width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+.dropmenu ul ul {
+  position: absolute;
+  display: none;
+  z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+  background: white;
+  padding: 0 20px 10px;
+  transform: translate(-20px, 20px);
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+.dropmenu ul ul li {
+  display: block;
+}
+
+.dropmenu ul li {
+  display: inline-block;
+}
+
+.dropmenu ul li a {
+  display: block;
+  width: 130px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 43px;
+  text-decoration: none;
+}
+
+.dropmenu ul li a:hover {
+  color: #000;
+}
+
+ /* 슬라이드 */
+ swiper-container {
+      
+      width: 80%;
+      height: 600px;
+      position: relative;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .quick-tab{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 480px;
+      right: 350px;
+      top: 200px;
+      z-index: 1;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+
+    }
+
+    .quick-tab-container
+    {
+      
+      background:beige;
+      
+    }
+
+    .quick-title{
+        font-size: 50px;
+        line-height: 50px;
+        text-align: center;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: black;
+        margin-top: 10px;
+
+    }
+    .quick-list{
+      font-weight: bold;
+      width: 100%;
+      display: flex;
+      text-decoration-color: #000;
+      justify-content: space-around;
+      height: 40px;
+      font-size: 30px;
+      text-decoration: none;
+      list-style: none;
+      margin-top: 20px;
+
+    }
+
+    .search-input{
+        height: 40px;
+        font-size: 20px;
+        width: 80%;
+        margin: 1%10%;
+        border: 2px solid black;
+        outline: 0;
+        border-radius: 10px;
+        margin-top: 40px;
+    }
+
+    .search-input~ .search-input{
+      margin-top: 3%;
+    }
+
+    .quick-find{
+      background: yellow;
+        height: 60px;
+        line-height: 60px;
+        font-size: 40px;
+        letter-spacing: 3px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 35px;
+        cursor: pointer;
+    }
+    .quick-item:hover{
+      text-decoration: underline blue 4px;
+      height: 70px;
+    }
+    /* 검색창 끝  */
+
+/* 호캉스 */
+ .pop-container{
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+  height: 550px; width: 80%; margin: 2% 10%; 
+ }
+ .pop-title-container{
+      width: 100%; height: 50px;
+      font-size: 30px; 
+    }
+    .pop-title{
+      display: inline-block; margin-left: 100px;
+    }
+    .pop-more{
+      float: right; margin-right: 30px; font-size: 20px; line-height: 70px; color: blue;
+    }
+    .pop-more ::after{
+      content:'';
+      display:block;
+      clear:both;
+    }
+    .pop-nav{
+      margin-top: 20px;
+      
+      width: 100%; 
+      height: 50px;
+    }
+    .poplist{
+      display: inline-block; width: 24%; text-align: center; line-height: 30px; font-size: 25px; cursor: pointer;
+    }
+    .poplist:hover{
+      text-decoration: underline blue 4px;
+      height: 40px; 
+    }
+    .pop-content{
+      margin: 0% 2%;width: 96%; height: 300px;  margin-top: 30px;
+    }
+    .star-score{
+      float: right; font-size: 18px; 
+    }
+   
+    .sale{
+      float: left; color: red; font: bold; margin-left: 20px; font-size: 20px;
+    }
+    .price{
+      float: right; font-size: 20px;
+    }
+    /* 호캉스 끝 */
+    /* 레저 인기순위  */
+
+    .lesuire-container{
+  width: 80%; margin: 3% 10%; background: white; height: 430px;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+
+}
+.lesuire-title-container{
+  width: 100%; height: 50px; font-size: 30px;
+}
+.lesuire-title{
+  display: inline-block; margin-left: 100px;
+}
+.lesuire-more{
+  float: right; margin-right: 30px; font-size: 20px; line-height: 70px; color: blue;
+  cursor: pointer;
+}
+.lesuire-content{
+  width: 96%; margin: 2% 2%; height: 250px; background-color: beige;
+}
+
+.multiple_slider{
+  text-align: center;
+}
+.multiple_slider li img{
+  width:100%;
+  height: 250px;
+}
+
+
+/* 인기여행지 */
+.popular-region-container{
+  height: 550px; width: 60%; background-color: white;
+  margin: 0% 20%;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+
+}
+.pop-region-title{
+  font-size: 20px;
+  margin-left: 30px;
+}
+.popular_region_slider .bx-wrapper img {
+    width:100% ; height: 700px;
+    display: block;
+}
+
+/* 인기여행지 끝 */
+/*  모달로그인 */
+.modal-login{
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  top:0%; left: 0%; 
+  
+  display: none;
+  z-index: 3000;
+}
+.modal_content{
+  position: relative;
+width:500px; height:500px;
+background:#fff; border-radius:10px;
+top:30%; left:40%;
+text-align:left;
+box-sizing:border-box;
+line-height:23px; 
+padding-top: 100px;
+
+}
+
+
+.modal_content .exit-btn{
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  right: 0;
+  top: 0;
+  position: absolute;
+  background: white;
+  border: 0px;
+ 
+}
+.login-container h1{
+ margin-bottom: 20px;
+ font-size: 50px;
+ letter-spacing: 3px;
+ text-align: center;
+}
+.login-container input{
+width: 300px; height:40px; 
+border-radius: 10px; 
+font-size : 20px;
+margin-top: 35px;
+text-align: left;
+margin-left: 30px;
+
+}
+.login-container .login-btn{
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    right: 30px;
+    top: 40%;
+    border-radius: 10px;
+}
+.join-find{
+    margin-top: 30px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  /* 모달로그인 끝 */
+  /* 사이드 버튼 */
+.btn-up{
+				text-decoration: none; color : black;
+				display: block; width: 70px; height : 70px;
+				border: 1px solid black; border-radius: 50%;
+        font-size: 30px; background-color: white;
+				text-align: center; line-height: 57px;
+				position : fixed; right : 30px ; bottom: 10px;
+		}
+
+    .btn-cart{
+				text-decoration: none; color : black;
+        
+				display: block; width: 70px; height : 70px;
+				border: 1px solid black; border-radius: 50%;
+        font-size: 30px; background-color: white;
+				text-align: center; line-height: 57px;
+				position : fixed; right : 30px ; bottom: 90px;
+		}
+/* 풋터 */
+footer{
+width: 100%;
+height: 350px;
+background: white;
+margin-top: 30px;
+display: inline-block;
+margin: 0;
+padding: 0;
+margin-top: 30px;
+}
+.footer-container-box{
+  display: flex;
+  margin:  0 10%;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.ft-box{
+  background-color: white;
+  width:  20%;
+  height: 250px;
+  display: inline-block;
+}
+
+.ft-box h2{
+  font-size: 30px;
+  letter-spacing: 2px;
+
+}
+.ft-box li{
+  margin-top: 3px;
+  list-style: none;
+}
+.company-box{
+  display: inline-block;
+
+}
+.company-title{
+  display: inline-block;
+  margin : 0 100px;
+  width: 200px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+.company-introduce{
+  display: inline-block;
+
+}
+.company-introduce span{
+  margin-left : 10px
+}
+.contact ul li img{
+  width: 20px;
+  height: 20px;
+}
+/* 풋터 끝 */
+
+/* .nav-search-container{
+    position: relative;
+    width: 100px;
+    line-height: 70px;
+    align-content: center;
+    }
+    .nav-search-input{
+        border-radius: 10px;
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        border: 2px solid black;
+        outline: 0;
+    }
+    .nav-search .search-btn{
+        position: absolute; width: 40px; height: 40px; background: none;
+        color: rgb(255, 255, 255); border: 0; cursor: pointer;
+        top: 10px; bottom: 0px; right:10px;
+    }
+    .nav-search img{
+      margin-bottom: -11px;
+      margin-left: -50px;
+    } */
+</style>
+
+</head>
+
+<body id="body">
+  <div class="wrap">
+    <header>
+      <a href="#">
+        <p><img src="../../img/travel.png" alt="" style="width: 50px; height: 50px;"></p>
+      </a>
+      
+      <!-- <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt=""> -->
+      <nav>
+        <div class="dropmenu">
+          <ul id="dm_ul">
+            
+            <li><a href="#">국내숙소</a>
+              <ul>
+                <li><a href="#">모텔</a></li>
+                <li><a href="#">호텔</a></li>
+                <li><a href="#">게스트하우스</a></li>
+              </ul>
+            </li>
+            <li><a href="#">레저/전시</a>
+              <ul>
+                <li><a href="#">레저</a></li>
+                <li><a href="#">전시</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교통</a>
+              <ul>
+                <li><a href="#">예약하기</a></li>
+                <li><a href="#">예약확인</a></li>
+              </ul>
+            </li>
+            <li><a href="#">더보기</a>
+              <ul>
+                <li><a href="#">비회원 에약</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">qna</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="nav-login">로그인</a>
+            </li>
+            <li>
+              <div class="nav-search">
+              <form action="" class="nav-search-container">
+                <input type="text" class="nav-search-input" placeholder="검색">
+                <button type="submit" class="search-btn"><img src="../../img/search.png" alt="버튼"></button>
+            </form>
+            </div >
+            </li>
+          </ul>
+      </nav>
+    </header>
+  </div>
+  <swiper-container class="mySwiper" pagination="true" pagination-type="fraction" navigation="true" space-between="30"
+  centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false" >
+  <swiper-slide><img src="../../img/travelad_img/seoul.jpg" alt=""></swiper-slide>
+  <swiper-slide><img src="../../img/travelad_img/beach.jpg" alt=""></swiper-slide>
+  <swiper-slide><img src="../../img/travelad_img/mokpo.jpg" alt=""></swiper-slide>
+  <swiper-slide><img src="../../img/travelad_img/seoul.jpg" alt=""></swiper-slide>
+  </swiper-container>
+  <div class="quick-tab">
+        
+    <div class="quick-tab-container">
+     <p class="quick-title">빠른예약</p>
+    <div class="quick-category">
+      <ul class="quick-list">
+        <li class="quick-item"><a href="#">숙박</a></li>
+        <li class="quick-item"><a href="#">레저</a></li>
+        <li class="quick-item"><a href="#">교통</a></li>
+      </ul>
+    </div>
+
+    <div class="quick-input-region">
+      <form action="" class="search-container">
+        <input type="text" class="search-input" placeholder="지역">
+      </form>
+    </div>
+
+    <div class="quick-calender">
+      <form action="" class="search-container">
+        <a href="#">
+          <input type="text" class="search-input" placeholder="검색" id="datepicker">
+        </a>
+      </form>
+    </div>
+    <div class="quick-find">
+      검색하기
+    </div>
+  </div>
+  </div>
+  <!-- 상단부분 -->
+
+  <!-- 호캉스 -->
+<div class="pop-container">
+  <div class="pop-title-container">
+    <div class="pop-title"><h2>호캉스는 어디로?</h2></div>
+    <div class="pop-more">호텔 더보기</div>
+  </div>
+    <div class="pop-nav">
+      <ul>
+        <li class="poplist">서울</li>
+        <li class="poplist">경기강원</li>
+        <li class="poplist">부산</li>
+        <li class="poplist">신입점순</li>
+      </ul>
+    </div>
+    <div class="pop-content">
+      <ul class="multiple_slider pop-slider">
+        <li><img src="../../img/hotel_img/1.webp" alt="">
+          <h2>오크우드 프리미어</h2>
+          <div class="star">
+            <span class="star-score">4.7/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">3%</span><span class="price">80000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/2.webp" alt=""><h2>호텔 나루 서울</h2>
+          <div class="star">
+            <span class="star-score">4.4/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">5%</span><span class="price">70000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/3.webp" alt=""><h2>더 플라자 서울</h2>
+          <div class="star">
+            <span class="star-score">4.2/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">13%</span><span class="price">90000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/4.webp" alt=""><h2>롯데 호텔 서울</h2>
+          <div class="star">
+            <span class="star-score">4.1/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">23%</span><span class="price">280000원</span>
+          </div></li>
+        <li><img src="../../img/hotel_img/5.webp" alt=""><h2>포시즌스 호텔 서울</h2>
+          <div class="star">
+            <span class="star-score">4.0/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">33%</span><span class="price">60000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/1.webp" alt=""><h2>오크우드 프리미어</h2>
+          <div class="star">
+            <span class="star-score">4.5/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">13%</span><span class="price">80000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/2.webp" alt=""><h2>호텔 나루 서울</h2>
+          <div class="star">
+            <span class="star-score">4.7/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">3%</span><span class="price">80000원</span>
+          </div></li>
+        <li><img src="../../img/hotel_img/3.webp" alt=""><h2>더 플라자 서울</h2>
+          <div class="star">
+            <span class="star-score">4.7/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">3%</span><span class="price">80000원</span>
+          </div>
+        </li>
+        <li><img src="../../img/hotel_img/4.webp" alt=""><h2>롯데 호텔 서울</h2>
+          <div class="star">
+            <span class="star-score">4.7/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">3%</span><span class="price">80000원</span>
+          </div></li>
+        <li><img src="../../img/hotel_img/5.webp" alt=""><h2>포시즌스 호텔 서울</h2>
+          <div class="star">
+            <span class="star-score">4.7/5</span>
+            <img src="../../img/star.png" style="width: 15px; height: 15px;
+            display: inline;float: right;margin-right: 3px;margin-top: 4px;"> 
+          </div>
+          <div class="cost-container clearfix" >
+           <span class="sale">3%</span><span class="price">80000원</span>
+          </div></li>
+      </ul>
+    </div> 
+</div>
+
+<!-- 레저인기순위 -->
+
+<div class="lesuire-container">
+  <div class="lesuire-title-container">
+    <div class="lesuire-title"><h2>레저 인기순위</h2></div>
+    <div class="lesuire-more">레저 더보기</div>
+  </div>
+  <div class="lesuire-content ">
+    <ul class="multiple_slider">
+      <li><img src="../../img/lesuire/fishing.jpg" alt=""><h2>낚시</h2><span class="price">10000원</span></li>
+      <li><img src="../../img/lesuire/luge.jpg" alt=""><h2>루지</h2><span class="price">20000원</span></li>
+      <li><img src="../../img/lesuire/parror.jpg" alt=""><h2>패러글라이딩</h2><span class="price">30000원</span></li>
+      <li><img src="../../img/lesuire/yoon.jpg" alt=""><h2>윤전시회</h2><span class="price">40000원</span></li>
+      <li><img src="../../img/lesuire/ironey.jpg" alt=""><h2>몽환적전시회</h2><span class="price">20000원</span></li>
+      <li><img src="../../img/lesuire/fishing.jpg" alt=""><h2>낚시</h2><span class="price">50000원</span></li>
+      <li><img src="../../img/lesuire/ironey.jpg" alt=""><h2>몽환적전시회</h2><span class="price">10000원</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 레저 인기순위 끝 -->
+
+<!-- 인기여행지 -->
+
+
+<div class="popular-region-container">
+  <div class="pop-region-title"><h1>추천 여행지 TOP8</h1></div>
+  <div class="pop-retion-content">
+    <ul class="popular_region_slider">
+      <li><img src="../../img/travelad_img/seoul.jpg" alt="" width="700px" height="400px"><h2>서울</h2></li>
+      <li><img src="../../img/travelad_img/mokpo.jpg" alt="" width="700px" height="400px"><h2>목포</h2></li>
+      <li><img src="../../img/travelad_img/busan.jpg" alt="" width="700px" height="400px"><h2>부산</h2></li>
+      <li><img src="../../img/travelad_img/beach.jpg" alt="" width="700px" height="400px"><h2>강릉</h2></li>
+      <li><img src="../../img/travelad_img/seoul.jpg" alt="" width="700px" height="400px"><h2>서울</h2></li>
+      <li><img src="../../img/travelad_img/mokpo.jpg" alt="" width="700px" height="400px"><h2>목포</h2></li>
+      <li><img src="../../img/travelad_img/busan.jpg" alt="" width="700px" height="400px"><h2>부산</h2></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 인기여행지 끝 -->
+
+<!-- 모달로그인 -->
+<div class="modal-login">
+  <div class="modal_content">
+    <button class="exit-btn">x</button>
+    <form class="login-container">
+          <h1>로그인</h1>
+          <input type="text" name="id" placeholder="아이디"><br>
+          <input type="password" name="pw" placeholder="비밀번호"><br>
+          <button class="login-btn">로그인</button>
+          <div class="join-find">
+            <a href="/html/signup-1.html" style="background: skyblue; border: 1px solid skyblue; border-radius: 10px;">개인 회원가입</a>
+            <a href="/html/signup-2.html" style="background: tan; border: 1px solid tan; border-radius: 10px;">사업자 회원가입</a>
+          </div>
+          <div class="join-find">
+            <a href="#">아이디/비밀번호찾기</a>
+          </div>
+    </form>
+  </div>
+</div>
+<!-- 모달로그인 끝  -->
+
+<!-- up -->
+ <a href="#body" class="btn-up">up</a>
+ <a href="mycart.html" class="btn-cart">cart</a>
+<!-- 풋터 -->
+ <footer>
+   <hr>
+  <div class="footer-container-box">
+    <div class="about-container ft-box"><h2>회사 소개</h2>
+      <ul>
+        <li>기업개요</li>
+        <li>연혁</li>
+        <li>찾아오시는길</li>
+      </ul>
+    </div>
+    <div class="customer-container ft-box"><h2>고객서비스</h2>
+      <ul>
+        <li>공지사항</li>
+        <li>비회원 예약조회</li>
+        <li>자주물어보는 질문</li>
+        <li>1대1 문의</li>
+        <li>환불</li>
+      </ul>
+    </div>
+    <div class="contact-container ft-box"><h2>contact</h2>
+      <div class="contact">
+        <ul>
+          <li>tel : 010-0000-0000</li>
+          <li>email : www@naver.com</li>
+          <li><img src="../../img/sns/facebook.png" alt=""></li>
+          <li><img src="../../img/sns/instagram.png" alt=""></li>
+          <li><img src="../../img/sns/youtube.png" alt=""> </li>
+          <li><img src="../../img/sns/kakao-talk.png" alt=""></li>
+        </ul>
+      </div>
+     </div>  
+  </div>
+  <hr>
+  <div class="company-box">
+    <div class="company-title"><img src="../../img/travel.png" alt=""></div>
+    <div class="company-introduce">
+      <span>이용약관</span>
+      <span>개인정보정책</span>
+      <span>기타정책</span>
+    </div>
+
+  </div>
+</footer>
+</body>
+
+<script >
+
+$(".dropmenu ul li").hover(function() {
+  $(this)
+    .find("ul")
+    .stop()
+    .fadeToggle(300);
+});
+
+$('.nav-login').click(function(){
+  $('.modal-login').show();
+});
+
+  $('.exit-btn').click(function(){
+  $('.modal-login').hide();
+})
+
+
+$(function(){
+  $('.multiple_slider').bxSlider({
+  minSlides:5,
+  maxSlides:5,
+  slideWidth:1000,
+  slideMargin:30,
+  moveSlides:1,
+  pager:true
+});
+$('.popular_region_slider').bxSlider({
+  minSlides:2,
+  maxSlides:2,
+  slideWidth:1000,
+  slideWidth:800,
+  slideMargin:30,
+  moveSlides:1,
+  pager:true
+});
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+    
+  } );
+
+});
+//아톰에서 js파일 따로 만들었을 때 안 되면 html 안에 넣으면 됩니다.
+
+</script>
+</html>
