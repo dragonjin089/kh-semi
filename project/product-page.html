@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모텔 상세 상품페이지</title>
+  <script src="/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+  <!-- 달려 제이쿼리 -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.all-box{
+		width: 1200px; margin: auto;
+	}
+	/* 슬라이드 */
+    swiper-container {
+      /* margin-top: 80px; */
+      width: 600px;
+      height: 300px;
+      position: relative;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: white;
+}
+
+a:link {
+  color: #333;
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: #333;
+}
+.nav-search-container{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    }
+    .nav-search-input{
+      border-radius: 10px;
+      width: 100%;
+      height: 30px;
+      font-size: 15px;
+      border: 2px solid black;
+      outline: 0;
+      line-height: 30px;
+    }
+    .nav-search .search-btn{
+        position: absolute; width: 20px; height: 20px; background: none;
+        color: rgb(255, 255, 255); border: 0; cursor: pointer;
+        top: 15px; bottom: 0px; right:20px;
+    }
+    .nav-search img{
+      width: 20px; height: 20px;
+      margin-bottom: 0px;
+      margin-left: 15px;
+    }
+/*헤더 부분*/
+.wrap {
+  background-color: white;
+}
+
+header {
+  width: 1400px;
+  margin: 0 auto;
+  padding: 25px 0;
+  font-size: 30px;
+  color: #555;
+  position: relative;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+/*찾기 이미지*/
+/* header input {
+  width: 40px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+header img:hover {
+  opacity: 1;
+} */
+
+#dm_ul {
+  min-width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+.dropmenu ul ul {
+  position: absolute;
+  display: none;
+  z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+  background: white;
+  padding: 0 20px 10px;
+  transform: translate(-20px, 20px);
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+.dropmenu ul ul li {
+  display: block;
+}
+
+.dropmenu ul li {
+  display: inline-block;
+}
+
+.dropmenu ul li a {
+  display: block;
+  width: 130px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 43px;
+  text-decoration: none;
+}
+
+.dropmenu ul li a:hover {
+  color: #000;
+}
+
+.product-characteristics{
+  width: 1200px;
+}
+
+.product-Payment-btn1:hover,
+.product-Payment-btn2:hover{
+  font-weight: bold;
+}
+
+</style>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="#">
+        <p><img src="../../img/travel.png" alt="" style="width: 50px; height: 50px;"></p>
+      </a>
+      
+      <!-- <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt=""> -->
+      <nav>
+        <div class="dropmenu">
+          <ul id="dm_ul">
+            
+            <li><a href="#">국내숙소</a>
+              <ul>
+                <li><a href="#">모텔</a></li>
+                <li><a href="#">호텔</a></li>
+                <li><a href="#">게스트하우스</a></li>
+              </ul>
+            </li>
+            <li><a href="#">레저/전시</a>
+              <ul>
+                <li><a href="#">레저</a></li>
+                <li><a href="#">전시</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교통</a>
+              <ul>
+                <li><a href="#">예약하기</a></li>
+                <li><a href="#">예약확인</a></li>
+              </ul>
+            </li>
+            <li><a href="#">더보기</a>
+              <ul>
+                <li><a href="#">비회원 에약</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">qna</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="nav-login">로그인</a>
+            </li>
+            <li>
+              <div class="nav-search">
+              <form action="" class="nav-search-container">
+                <input type="text" class="nav-search-input" placeholder="검색">
+                <button type="submit" class="search-btn"><img src="../../img/search.png" alt="버튼"></button>
+            </form>
+            </div >
+            </li>
+          </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="all-box" style="margin-top: 20px;">	
+    <!-- 상품 정보 박스 -->
+    <div class="top-box" style="display: flex;">
+        <div class="product-img">
+          <div class="product-main-img">
+            <swiper-container class="mySwiper" pagination="true" pagination-type="fraction" navigation="true" space-between="30"
+            centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false" >
+            <swiper-slide><img src="../img/motel/내부 메인 사진 1번.jpg" alt=""></swiper-slide>
+            <swiper-slide><img src="../img/motel/내부 사진 2번.jpg" alt=""></swiper-slide>
+            <swiper-slide><img src="../img/motel/내부 사진 3번.jpg" alt=""></swiper-slide>
+            <swiper-slide><img src="../img/motel/내부 사진 4번.jpg" alt=""></swiper-slide>
+            <swiper-slide><img src="../img/motel/내부 사진 5번.jpg" alt=""></swiper-slide>
+            </swiper-container>
+          </div>
+        </div>
+        <!-- 상품 정보 우측 박스 -->
+        <div class="product-box" style="padding-left: 30px;">
+          <div class="product-main-title" style="width: 600px; display: flex; margin-bottom: 25px;"><h1>강남 더 뮤즈</h1></div>
+          <div class="product-review-num" style="width: 600px; display: flex; color: gray; padding-top: 20px; padding-left: 10px;">리뷰 3개</div>
+          <div class="product-address" style="width: 600px; display: flex; padding-bottom: 30px; margin-top: 5px; padding-left: 10px;">서울 강남구 역삼동 678-9</div>
+          <div class="product-main-content" style="width: 570px; font-weight: bold; background-color: rgb(231, 227, 227); padding-top: 10px; padding-left: 10px;">사장님 추천 홍보!
+            <div class="product-introduce" style="color: gray; padding-top: 11px; margin-bottom: 30px; padding-bottom: 10px;">
+              <li>골드글라스 객실 Couple Pc ＆ 배틀그라운드 가능 그래픽카드!!</li>
+              <li>전객실 오버워치급 게임가능</li>
+              <li>최고사양 PC 오버워치, 배틀그라운드, 커플PC, UHD대형 TV 연결가능</li>
+              <li>3인이상 숙소에 문의후 입실가능합니다.</li>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="product-Payment" style="display: flex; width: 100%;">
+    
+    
+    <div style="padding-left: 630px;">
+      <button class="product-Payment-btn1" style="width: 250px; height: 50px; font-size: 20px; background-color: white; cursor: pointer;">장바구니 추가</button>
+      <button class="product-Payment-btn2" style="width: 250px; height: 50px; font-size: 20px; margin-left: 50px; background-color: white; cursor: pointer;">결재하기</button>
+    </div>
+  </div>
+  		<!-- ============================================ -->
+    <div class="middle-box">
+      <!-- 숙박 편의시설 -->
+      <div class="product-characteristics" style="border-top: 2px solid #222;  margin-top: 30px; display: flex; width: 1200px;">
+        <div class="product-icon" style="padding-top: 30px;"><h2 style="padding-left: 15px;">편의시설</h2>
+          <div class="product-icon-wifi" style=" left: 250px; top: 25px; position: relative; display: flex;">
+            <img src="../img/icon/wifi.png" alt="" style="width: 25px; height: 25px; margin-right: 10px;"><div>와이파이</div>
+          </div>
+          <div class="product-icon-car-park" style=" left: 450px; position: relative; display: flex;">
+            <img src="../img/icon/car-park.png" alt="" style="width: 25px; height: 25px; margin-right: 10px;"><div>주차장</div>
+          </div>
+          <div class="product-icon-computer" style=" left: 250px; top: 35px; position: relative; display: flex;">
+            <img src="../img/icon/computer.png" alt="" style="width: 25px; height: 25px; margin-right: 10px;"><div>배그사양 PC</div>
+          </div>
+          <div class="product-icon-front-desk" style=" left: 650px; bottom: 55px; position: relative; display: flex;">
+            <img src="../img/icon/front-desk.png" alt="" style="width: 25px; height: 25px; margin-right: 10px;"><div>프론트 24시간</div>
+          </div>
+          <div class="product-icon-air-conditioner" style=" left: 850px; bottom: 80px; position: relative; display: flex;">
+            <img src="../img/icon/air-conditioner.png" alt="" style="width: 25px;  height: 25px; margin-right: 10px;"><div>냉 온풍기</div>
+          </div>
+          <div class="product-icon-tv" style=" left: 450px; bottom: 45px; position: relative; display: flex;">
+            <img src="../img/icon/tv.png" alt="" style="width: 25px; height: 25px;  margin-right: 10px;"><div>UHD대형 TV</div>
+          </div>
+          <div class="product-icon-coffee" style=" left: 650px; bottom: 70px; position: relative; display: flex;">
+            <img src="../img/icon/coffee.png" alt="" style="width: 25px; height: 25px;  margin-right: 10px;"><div>커피 머신</div>
+          </div>
+          <div class="product-icon-atm" style=" left: 850px; bottom: 95px; position: relative; display: flex;">
+            <img src="../img/icon/atm-machine.png" alt="" style="width: 25px; height: 25px;  margin-right: 10px;"><div>ATM</div>
+          </div>
+        </div>
+      </div>
+      <!-- 숙박 주의사항 -->
+      <div class="product-precautions" style="border-top: 2px solid #222; width: 1200px; padding-top: 30px; margin-bottom: 60px;">
+        <div style="width: 100%;"><h2 style="padding-left: 15px;">주의사항</h2></div>
+        <div style="display: flex; padding-top: 30px;">
+          <div class="a" style="padding-left: 200px;">
+            <div class="product-payment-cancle" style="font-size: 17px; font-weight: bold; margin-bottom: 15px;">취소/선결제</div>
+            <div class="product-payment-cancle-content" style="font-size: 14px;">취소/선결제 정책은 객실 유형 및 예약 업체에 따라 다릅니다.</div>
+          </div>
+          <div class="b" style="padding-left: 150px;">
+            <div class="product-payment-cancle"  style="font-size: 17px; font-weight: bold; margin-bottom: 15px;">체크인 / 체크아웃</div>
+            <div class="product-payment-cancle-content" style="font-size: 14px;">체크인 시각: 15:00 이후, 체크아웃 시각: 11:00 이전</div>
+          </div>
+        </div>
+      </div>
+      <!-- 숙박 상품 (대실) -->
+      <div class="product-Introduction" style="border-top: 2px solid #222;padding-top: 30px; display: flex; width: 1200px; margin-bottom: 60px;">
+        <div style="width: 100%;"><h2 style="padding-left: 15px;">상품</h2>
+          <p style="font-size: 16px; margin-left: 100px; font-weight: bold; margin-top: 10px;">예약 날짜 : <input type="text" id="datepicker" style="width: 100px; text-align: center;" placeholder="02/27/2023">~
+            <input type="text" id="datepicker1" style="width: 100px; text-align: center;" placeholder="02/27/2023"></p>
+          <!-- 상품 1개 -->
+          <div style="display: flex; padding-bottom: 50px; padding-top: 50px;">
+            <img src="../img/motel/내부 사진 2번.jpg" alt="" style="width: 400px; height: auto; margin-left: 200px;">
+            <div class="product-inner-information" style="border-right: 1px solid gray; margin: 20px 5px 5px 30px;">
+              <h3 style="margin-bottom: 5px;">스탠다드 더블</h3>
+              <h4 style="margin-bottom: 30px;">대실</h4>
+              <h3 style=" width: 100%; margin-left: 150px; margin-bottom: 20px; margin-right: 30px;">40,000원</h3>
+              <div class="product-inner-information-time" style="border-top: 1px solid gray; margin-right: 30px;">
+                <div style="display: flex; color: gray; margin-top: 30px;">마감시간
+                  <p style="margin-left: 80px;">22시까지</p>
+                </div>
+                <div style="display: flex; color: gray; margin-top: 5px;">이용시간
+                  <p style="margin-left: 80px;">최대 5시간</p>
+                </div>
+              </div>
+            </div>
+            <!-- 숙박 상품 (숙박) -->
+            <div class="product-inner-information" style="margin: 20px 5px 5px 30px;">
+              <h3 style="margin-bottom: 5px;"> </h3>
+              <h4 style="margin-bottom: 30px; padding-top: 25px;">숙박</h4>
+              <h3 style=" width: 100%; margin-left: 150px; margin-bottom: 20px; margin-right: 30px;">75,000원</h3>
+              <div class="product-inner-information-time" style="border-top: 1px solid gray; margin-right: 30px;">
+                <div style="display: flex; color: gray; margin-top: 30px;">입실시간
+                  <p style="margin-left: 80px;">15시부터</p>
+                </div>
+                <div style="display: flex; color: gray; margin-top: 5px;">퇴실시간
+                  <p style="margin-left: 80px;">익일 12시</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 상품 2개 -->
+          <div style="display: flex; border-top: 1px solid gray; padding-bottom: 50px; padding-top: 50px;">
+            <img src="../img/motel/내부 사진 3번.jpg" alt="" style="width: 400px; height: auto; margin-left: 200px;">
+            <div class="product-inner-information" style="border-right: 1px solid gray; margin: 20px 5px 5px 30px;">
+              <h3 style="margin-bottom: 5px;">스탠다드 트윈</h3>
+              <h4 style="margin-bottom: 30px;">대실</h4>
+              <h3 style=" width: 100%; margin-left: 150px; margin-bottom: 20px; margin-right: 30px;">40,000원</h3>
+              <div class="product-inner-information-time" style="border-top: 1px solid gray; margin-right: 30px;">
+                <div style="display: flex; color: gray; margin-top: 30px;">마감시간
+                  <p style="margin-left: 80px;">22시까지</p>
+                </div>
+                <div style="display: flex; color: gray; margin-top: 5px;">이용시간
+                  <p style="margin-left: 80px;">최대 5시간</p>
+                </div>
+              </div>
+            </div>
+            <!-- 숙박 상품 (숙박) -->
+            <div class="product-inner-information" style="margin: 20px 5px 5px 30px;">
+              <h3 style="margin-bottom: 5px;"> </h3>
+              <h4 style="margin-bottom: 30px; padding-top: 25px;">숙박</h4>
+              <h3 style=" width: 100%; margin-left: 150px; margin-bottom: 20px; margin-right: 30px;">75,000원</h3>
+              <div class="product-inner-information-time" style="border-top: 1px solid gray; margin-right: 30px;">
+                <div style="display: flex; color: gray; margin-top: 30px;">입실시간
+                  <p style="margin-left: 80px;">15시부터</p>
+                </div>
+                <div style="display: flex; color: gray; margin-top: 5px;">퇴실시간
+                  <p style="margin-left: 80px;">익일 12시</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 숙박 후기 -->
+      <div class="product-review" style="border-top: 2px solid #222;  padding-top: 30px;width: 1200px; margin-bottom: 60px;">
+        <div style="width: 100%;"><h2 style="padding-left: 15px; margin-bottom: 30px;">후기</h2></div>
+        <!-- 평점 표시 -->
+        <div style="display: flex;">
+          <div class="product-evgNum" style="padding-left: 200px; display: flex;"><h2>평점</h2>
+            <img src="../img/icon/star.png" alt="" style=" margin-left: 10px; width: 35px; height: 30px;"><h2 style="margin-left: 10px;">4.5 / 5.0</h2></div>
+        </div>
+
+      </div>
+    </div>
+  <!-- ============================================ -->
+    <div class="bottom-box">
+
+    </div>
+  </div>
+</body>
+<script>
+  $(".dropmenu ul li").hover(function() {
+  $(this)
+    .find("ul")
+    .stop()
+    .fadeToggle(300);
+});
+
+// 달력 제이쿼리
+$( function() {
+    $( "#datepicker" ).datepicker();
+  });
+  $( function() {
+    $( "#datepicker1" ).datepicker();
+  });
+
+
+// $(document).on('click', '.product-Payment-btn1', function (e) {
+// 			e.preventDefault();
+// 			if ($(this).hasClass("active") == true) {
+// 				$(this).css("background-color", "white");
+//         $(this).css("font-weight", "");
+// 				$(this).removeClass("active");
+// 			} else {
+// 				$(this).addClass("active");
+//         alert('장바구니 추가했습니다!')
+// 				$('.product-Payment-btn1').css("background-color", "pink");
+//         $('.product-Payment-btn1').css("font-weight", "bold");
+// 			}
+// 		});
+
+$(document).ready(function(){
+    $('.product-Payment-btn1').click(function() {
+        var result = confirm('상품을 추가하였습니다.\n\n장바구니로 이동하시겠습니까?');
+
+        if(result) {
+           //yes
+            // location.replace(src="../html/");
+        } else {
+            //no
+        }
+    });
+});
+
+</script>
+</html>
