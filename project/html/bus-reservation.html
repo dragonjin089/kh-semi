@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약페이지</title>
+    
+    <script src="/js/jquery.min.js"></script>
+    <style type="text/css"></style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+ 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+ 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+    <!-- 달력 링크 -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <!-- 다이얼로그 링크 -->
+    <style>
+        
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: white;
+}
+
+a:link {
+  color: #333;
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: #333;
+}
+
+/*헤더 부분*/
+.wrap {
+  background-color: white;
+}
+
+header {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 25px 0;
+  font-size: 30px;
+  color: #555;
+  position: relative;
+}
+
+/*찾기 이미지*/
+header img {
+  width: 40px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+header img:hover {
+  opacity: 1;
+}
+
+#dm_ul {
+  min-width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+.dropmenu ul ul {
+  position: absolute;
+  display: none;
+  z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+  background: white;
+  padding: 0 20px 10px;
+  transform: translate(-20px, 20px);
+}
+
+.dropmenu ul ul li {
+  display: block;
+}
+
+.dropmenu ul li {
+  display: inline-block;
+}
+
+.dropmenu ul li a {
+  display: block;
+  width: 150px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 43px;
+  text-decoration: none;
+}
+
+.dropmenu ul li a:hover {
+  color: #000;
+}
+
+/* 헤더 끝라인---------------------------------- */
+li{list-style: none;}
+.container{
+  width: 1700px; height: 1700px;
+  min-width: 1600px; min-height: 1200px;
+   margin-left: 11%; 
+}
+.display{
+  width: 100%; height: 120px;
+  background: url(/img/travelad_img/seoul.jpg);
+}
+.display_title{ margin-left: 50px;
+  line-height: 180px; color: white; font-size: 40px;
+}
+.innerContainer{ 
+  width: 100%;height: 500px;
+  padding: 60px 50px 60px 50px;
+  display: flex;
+}
+/* box */
+/* bus */
+.busReservationBox{border: 1px solid #ddd; border-radius: 10px;
+  width: 50%; height: 100%px; position: relative;
+  box-shadow: 5px 5px 5px gray;
+  
+}
+
+.bus_title_imgBox{
+width: 100%; height: 348px;
+display: flex; box-sizing: border-box;
+
+}
+.busReservation_title{  text-align: center;
+  width: 100% ; height: 30px;
+  
+}
+.bus-img{ width: 50%; height: 100%; padding: 10px;
+}
+
+.bus_reser{ background-color: rgb(215, 214, 226); border-radius: 10px;
+  width: 48%; height: 315px;  
+  display: inline-block; position: relative;
+  padding: 80px 10px 80px 20px; margin-top: 18px;
+
+}
+.bus-startDay{
+  display: flex;
+}
+/* train */
+
+.trainReservatoinBox{border: 1px solid #ddd; border-radius: 10px;
+  width: 50%; height: 100%;  margin-left: 10px;
+  box-shadow: 5px 5px 5px gray;
+
+}
+.train_title_imgBox{
+width: 100%; height: 348px;
+display: flex; box-sizing: border-box;
+}
+.trainReservation_title{  text-align: center;
+  width: 100% ; height: 30px;
+  
+}
+.train-img{
+  width: 48%; height: 100%; padding: 10px;
+}
+.train_reser{
+  background-color: rgb(215, 214, 226); border-radius: 10px;
+  width: 48%; height: 315px;  
+  display: inline-block; position: relative;
+  padding: 80px 10px 80px 20px; margin-top: 18px;
+}
+.searchBox{margin-left: 10px; position: relative;   
+  padding: 0px 27px 0px 0px; height: 34px;}
+
+.startPlace{margin-left: 10px; margin-bottom: 30px; }
+.time{margin-left: 8px; letter-spacing: -1px;}
+/* 출발역 도착역 제목 */
+.startSearch{
+  font-size: 19px; font-weight: bold; margin-left: 12px;
+  position: relative; padding: 5px 27px 5px 0px;  width: 230px;
+  
+}
+.place_search {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+
+    background: url(../img/bus/busSearch.png) #fff 99% 50% no-repeat;
+}
+.start_text{
+  position: absolute;
+    top: 0;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+.endSearch{
+  font-size: 19px; font-weight: bold; margin-left: 12px;
+  width: 230px;  padding: 5px 0px;
+}
+.timeSearch{
+  font-size: 17px; font-weight: bold; letter-spacing: -1px;
+   padding: 5px 0px; width: 230px; 
+}
+.start_arrow{ 
+  width: 10px; height: 10px;  position: absolute; top: 5px;
+  background: url(../img/bus/busReArrow.png)0 0 no-repeat;
+}
+
+.respace{position: relative;}
+
+
+
+.countBox{
+  margin-left: 7px; display: block;
+  
+}
+.busPeople{margin-left: 20px; letter-spacing: 5px;}
+.bus_count{width: 50px; height: 17px; text-align: center;}
+
+.btn_search{  border-radius: 10px;
+  font-weight: bold;
+  background-color: rgb(255, 244, 202);
+  
+  width: 80px; height: 50px;
+  text-align: center; line-height: 45px; font-size: 20px;
+  position: absolute; left:245px;
+}
+/* 고속버스"," 끝 */
+
+
+.please{ border: 1px solid #ddd; box-shadow: 5px 5px 5px gray;
+  width: 100%; height: 500px; margin-bottom: 15px; border-radius: 5px;
+}
+/* 레저 인기순위  */
+.lesuire-container{
+  width: 93%; margin: 40px 0px 0px 7%;  background: white; height: 430px;
+}
+.lesuire-title-container{
+  width: 90%; height: 50px; font-size: 20px;
+}
+.lesuire-title{
+  display: inline-block; margin-left: 20px;
+}
+.lesuire-more{
+  float: right;  font-size: 20px; line-height: 70px; color: blue;
+  cursor: pointer;
+}
+.lesuire-content{
+  width: 100%;    height: 310px; background-color: beige; 
+   overflow-x: scroll; max-width: 90%; 
+}
+
+.multiple_slider{
+  text-align: center; display: flex;
+}
+.multiple_slider li img{
+  width:250px;
+  height: 250px; 
+}
+
+/* 레저 인기순위 끝 */
+
+/* 다이얼로그 */
+.dio{width: 1000px; height: 600px;}
+.place_select{ background-color: #004932;
+  width: 100%; height: 200px; padding: 50px 70px 40px 70px;
+  position: relative; display: block;
+}
+.place_select{ 
+   color: #fff;  
+}
+
+
+
+dd{margin-left: 60px;}
+dt{
+  position: absolute;
+  top: 20;
+  left: 10;
+  color: #fff;
+  font-size: 17px;
+}
+.box::after{
+  display: block; content: ""; clear: both;
+  margin-bottom: 30px;
+}
+
+
+.selectBox{
+    margin-left: 20px; padding: 0px 27px 0px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.selectSearch{
+  width: 100%; height: 30px;line-height: 20px;
+  position: relative;
+ 
+  border-radius: 5px;
+ 
+}
+.selectSearchIn{
+  height: 50px;
+}
+.endPlace_search{
+  width: 100%; height: 30px;line-height: 20px; padding-left: 5px;
+  position: relative;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background: url(../img/bus/busSearch.png) #fff 99% 50% no-repeat;
+
+}
+.selectBoxT{
+    margin-left: 20px; padding: 0px 30px 0px 27px; width: 100%  ;
+  position: relative;
+  display: flex;
+  vertical-align: middle;
+}
+.placeSearchT{ position: absolute; top: 4px; right: 17px;
+cursor: pointer;
+float: right;
+height: 30px;  width: 30px;
+}
+.place_select::after{display: block; content: ""; clear: both;}
+
+
+.plac_box{ border: 1px solid black;
+  padding: 10px 30px 20px 15px; width: 100%; height: 560px; font-size: 20px;
+}
+.place_listBox{
+  position: relative;
+  width: 99%;
+  height: 90%;
+  overflow-y: auto;
+}
+.place_list{
+  overflow: hidden; width: 99%;
+  border-top: 1px solid #747474;
+  border-bottom: 1px solid #747474;
+  border-right: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  letter-spacing: 1px;
+
+}
+.case{border-right: 1px solid #c3c3c3; border-bottom: 1px solid #747474; padding: 10px 0px 10px 0px;
+  width: 50%;float: left;
+}
+.img_reser{float: right; margin-right: 10px; width: 40px; height: 25px;}
+/* 다이얼로그 */
+
+ </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+          <a href="#">
+            <p>LOGO</p>
+          </a>
+          <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt="">
+          <nav>
+            <div class="dropmenu">
+              <ul id="dm_ul">
+                
+                <li><a href="#">국내숙소</a>
+                  <ul>
+                    <li><a href="#">모텔</a></li>
+                    <li><a href="#">호텔</a></li>
+                    <li><a href="#">게스트하우스</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">레저/전시</a>
+                  <ul>
+                    <li><a href="#">레저</a></li>
+                    <li><a href="#">전시</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">교통</a>
+                  <ul>
+                    <li><a href="#">예약하기</a></li>
+                    <li><a href="#">예약확인</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">더보기</a>
+                  <ul>
+                    <li><a href="#">비회원 에약</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">qna</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" class="nav-login">로그인</a>
+                </li>
+              </ul>
+          </nav>
+        </header>
+      </div>
+      <!-- 헤더 -->
+    <div class="container">
+        <div class="display">
+          <h1 class="display_title">교통조회</h1>
+        </div>
+        <div class="innerContainer">
+          <!-- 버스조회 -->
+            <div class="busReservationBox">
+              <h2 class="busReservation_title">고속버스 승차권 조회</h2>
+              <div class="bus_title_imgBox">
+                <img src="../img/bus/busicon.png " alt="" class="bus-img">   
+                <ul class="bus_reser">
+                  <li class="bus-startDay respace">
+                    <span class="start_arrow"></span>
+                    <span class="startPlace"> 출발지 : </span>
+                    <div class="searchBox">
+            
+                      <input type="text" class="startSearch" name="start_dialog" id="Sd" placeholder="출발지 선택">
+
+                      <a href="#" name="place_search">
+                          <span class="start_text">출발지</span>
+                      </a>
+                    
+                      
+                    </div>
+                    <li class="bus-startDay respace">
+                      <span class="start_arrow"></span>
+                      <span class="startPlace"> 도착지 : </span>
+                      <div class="searchBox">
+                        <label>
+                          <input type="text" class="endSearch"  name="end_dialog" id="Ed" placeholder="도착지 선택">
+                          
+                        </label>
+                        <a href="#" name="place_search"></a>
+                      </div>
+                  </li>
+                  <li class="bus-startDay respace">
+                    <span class="start_arrow"></span>
+                    <span class="startPlace time">가는 일시 :</span>
+                    <div class="searchBox">
+                      <label>
+                         <input type="text" class="timeSearch" id="Dp">
+                      </label>
+                     
+                    </div>
+                  </li>
+                  
+                  <li class="bus-startDay respace">
+                   
+                        <a href="#" type="button" class="btn_search" id="btn_spend">조회</a>
+                    
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <!-- 기차조회 -->
+            <div class="trainReservatoinBox">
+              <h2 class="trainReservation_title">기차 승차권 조회</h2>
+              <div class="train_title_imgBox">
+              <img src="../img/bus/train_icon.png " alt="" class="train-img">   
+              <ul class="train_reser">
+                <li class="bus-startDay respace">
+                  <span class="start_arrow"></span>
+                  <span class="startPlace"> 출발지 : </span>
+                  <div class="searchBox">
+                    <input type="text" class="startSearch" name="start_dialog" id="Sd" placeholder="출발지 선택">
+                    <a href="#" name="place_search">
+                        <span class="start_text">출발지</span>
+                    </a>
+                  </div>
+                  <li class="bus-startDay respace">
+                    <span class="start_arrow"></span>
+                    <span class="startPlace"> 도착지 : </span>
+                    <div class="searchBox">
+                      <label>
+                        <input type="text" class="endSearch"  name="end_dialog" id="Ed" placeholder="도착지 선택">
+                      </label>
+                      <a href="#" name="place_search"></a>
+                    </div>
+                </li>
+                <li class="bus-startDay respace">
+                  <span class="start_arrow"></span>
+                  <span class="startPlace time">가는 일시 :</span>
+                  <div class="searchBox">
+                    <label>
+                       <input type="text" class="timeSearch" id="Dp">
+                    </label>
+                  </div>
+                </li>
+                <li class="bus-startDay respace">
+                      <a href="#" type="button" class="btn_search" id="btn_spend">조회</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+            
+
+        </div>
+        <!-- 레저 시작 -->
+        <div class="please sleep">
+          <div class="lesuire-container">
+            <div class="lesuire-title-container">
+              <div class="lesuire-title"><h2>숙박 인기순위</h2></div>
+              <div class="lesuire-more">숙박 더보기</div>
+            </div>
+            <div class="lesuire-content ">
+              <ul class="multiple_slider">
+                <li><img src="../img/travelad_img/seoul.jpg" alt="" ><h2>서울</h2></li>
+                <li><img src="../img/travelad_img/mokpo.jpg" alt="" style="margin-left: 10px;"><h2>목포</h2></li>
+                <li><img src="../img/travelad_img/busan.jpg" alt="" style="margin-left: 10px;"><h2>부산</h2></li>
+                <li><img src="../img/travelad_img/beach.jpg" alt="" style="margin-left: 10px;"><h2>강릉</h2></li>
+                <li><img src="../img/travelad_img/seoul.jpg" alt="" style="margin-left: 10px;"><h2>서울</h2></li>
+                <li><img src="../img/travelad_img/mokpo.jpg" alt="" style="margin-left: 10px;"><h2>목포</h2></li>
+                <li><img src="../img/travelad_img/busan.jpg" alt="" style="margin-left: 10px;"><h2>부산</h2></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 레저 -->
+        <div class="please sleep">
+          <div class="lesuire-container">
+            <div class="lesuire-title-container">
+              <div class="lesuire-title"><h2>레저 인기순위</h2></div>
+              <div class="lesuire-more">레저 더보기</div>
+            </div>
+            <div class="lesuire-content ">
+              <ul class="multiple_slider">
+                <li><img src="../img/travelad_img/seoul.jpg" alt="" ><h2>서울</h2></li>
+                <li><img src="../img/travelad_img/mokpo.jpg" alt="" style="margin-left: 10px;"><h2>목포</h2></li>
+                <li><img src="../img/travelad_img/busan.jpg" alt="" style="margin-left: 10px;"><h2>부산</h2></li>
+                <li><img src="../img/travelad_img/beach.jpg" alt="" style="margin-left: 10px;"><h2>강릉</h2></li>
+                <li><img src="../img/travelad_img/seoul.jpg" alt="" style="margin-left: 10px;"><h2>서울</h2></li>
+                <li><img src="../img/travelad_img/mokpo.jpg" alt="" style="margin-left: 10px;"><h2>목포</h2></li>
+                <li><img src="../img/travelad_img/busan.jpg" alt="" style="margin-left: 10px;"><h2>부산</h2></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        
+    </div>
+    <!-- 다이얼로그  버스 조회-->  
+    <div id="dialog" class="dio" title="">
+      <div class="place_select">
+        <dl class="box">
+          <dt>지역선택</dt>
+          <dd>
+            <div class="selectBox">
+              <p class="selectSearch">
+                <select name="selectSearchIn" id="select_sech"  placeholder="전체" style="width: 500px; height: 30px; border-radius: 5px;">
+                  <option value="all">전체</option>
+                  <option value="sudo">특별/광역/자치</option>
+                  <option value="gangwon">강원도</option>
+                  <option value="gyunggi">경기도</option>
+                  <option value="경상남도">경상남도</option>
+                  <option value="경상북도">경상북도</option>
+                  <option value="충청남도">충청남도</option>
+                  <option value="충청북도">충청북도</option>
+                  <option value="전라남도">전라남도</option>
+                  <option value="전라북도">전라북도</option>
+                </select>
+              </p>
+            </div>
+          </dd>
+        </dl>
+        <dl>
+          <dt>터미널명</dt>
+          <dd>
+            <div class="selectBoxT">
+              <input type="text" class="endPlace_search" >
+                <a href="#" class="placeSearchT"></a>
+              
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="plac_box">
+        <strong class="sp_title" style="margin-left: 10px;">터미널 선택</strong>
+        <div class="place_listBox">
+          <ul class="place_list">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- 다이얼로그 -->
+   
+
+
+
+
+    <script>
+        let cookie="";
+        let all =["가평","간성","감곡","강구","강릉시외터미널","강진(전남)","개양(진주)","거제(고현)","거진","거창","경북대(상주)","경북도청","경북도청(신)","경산","경상대(칠암)","경주고속","경주시외","계룡금암","고금","고덕","고령","고북","고성(경남)","고양(백석)","고양(화정)","고창","고천","고한사북공영","고흥","공도","공주","공주(산성)","관산","광명","광명(철산역)","광양","광주(경기)","광주(유·스퀘어)","광천(충남)","괴산","구례","구리","구미","구미공단","구미복지","군산","군산고속","군위","군포","금산","금촌","기지시","기흥역","김대중컨벤션센터","김제","김천","김천부곡한남","김포공항","김해","김해공항","나로도","나주","나주혁신도시","낙산","남교","남선(신도안)","남악","남악도청","남원","남지","남청주","남해","내포","노고단(성삼재)","녹동","논산","단양상진","담양","당목","당진","대구공항","대구대","대구북부","대구서부","대소","대야","대의","대전도룡","대전복합","대전서남부","대전청사(선사유적)","대전청사공항(선사유적)","덕산(산청)","덕산스파","덕진동","도리원","동광양","동대구","동두천","동서울","동송","동영천IC정류장","동학사","동해","땅끝","마산","마산남부","만리포","목포","무안(전남)","무주","문경","문장","물치","미탄","밀양","배둔","배방정류소","백담사","벌교","보령(대천)","보성","보은","봉강교","봉화(경북)","부곡","부산동래","부산동부","부산서부(사상)","부산해운대","부안","부여","부천","북대전IC","북청주(청주대)","사천","사천공항","사천시청(용현)","산청","삼가","삼성","삼척","삼천포","삼호","삽교천","상봉","상주시외","서대구역","서산","서상(남덕유산)","서수원","서울남부","서천","서현리","석곡","성남","성전","성주","세마역(오산)","세종","세종청사","속리산","속초","송도국제교","송도환승센터","송정역","송탄","수안보","수원터미널","순창","순천","순천신대지구(CGV)","시지","시흥","신갈(용인)","신남","신례원","신반","신창","신평","쏠비치진도","아산(온양)","아주대","안면도","안산터미널","안성","안양","안양역","안의","안중","안흥","알펜시아","양구","양구정중앙","양산","양양","양양국제공항","양주역","언양","엄사","여수","여주","여천","연천","영광","영덕","영동","영산(경남)","영암","영양","영월","영주","영천","영통","영해","예산","예천","예천삼거리","오산","오색","오수","오창산단","옥과","온정","옹천","와수리","완도","완산동","완주혁신도시","용계","용원(녹산,명지)","용인","우만동","운교","운남","운산","운정(경기)","울산","울산고속","울산공항","울산신복","울진","원광대학교 앞","원동","원주","원지","원통","월곶삼거리","유성시외","음암","의령","의성","의정부","이천","익산","익산IC","익산고속","익산왕궁","인월","인제","인천","인천공항1터미널","인천공항2터미널","일동","임계","임실","임자(대광)","자운대","장계","장성","장수","장승포","장신대","장유","장유(환승)","장평","장항","전북(완주)혁신도시","전주(리무진터미널)","전주대","전주시외터미널","점촌","정선","정읍","제천","조치원","좌천","주문진","주왕산","죽전","죽전(경전)","중산리","지리산(백무동)","진도","진보","진부","진안","진영","진주","진주","진주","진주","진주(개양)","진주(경남)","진주혁신도시","진천","진해","진해경찰서","창기리","창녕","창원","창원남산","창원역","천안","천안아산(KTX)역","청도(경북)","청송","청양","청자도요지","청주","청주공항","청주북부터미널","청주사창","청평","춘양","춘천","충주","칠원예곡","칠원읍","코리아텍","코엑스(도심공항)","태백","태안","통영","평창","평택","평택대","평해","포항","풍기IC","하남BRT","하동","하양","하조대","한서대","함안가야","함안군북(39사단)","함양","함창","함평","합덕","합천","해남","해미","현풍","호계동","호남제일문","호산","홍농","홍성","홍천","화개공용","화천","횡계","횡성","효문","후포"];
+        let sudo =["광주(유·스퀘어)","김대중컨벤션센터","김포공항","김해공항","대구공항","대구북부","대구서부","대전도룡","대전복합","대전서남부","대전청사(선사유적)","대전청사공항(선사유적)","동대구","동서울","부산동래","부산동부","부산서부(사상)","부산해운대","북대전IC","상봉","서대구역","서울남부","세종","세종청사","송도국제교","송도환승센터","송정역","시지","언양","용계","울산","울산고속","울산공항","울산신복","유성시외","인천","인천공항1터미널","인천공항2터미널","자운대","조치원","좌천","코엑스(도심공항)","현풍","효문"];
+        let gangwon = ["간성","강릉시외터미널","거진","고한사북공영","낙산","동송","동해","물치","미탄","백담사","삼척","속초","신남","안흥","알펜시아","양구","양구정중앙","양양","양양국제공항","영월","오색","와수리","운교","원주","원통","인제","임계","장평","정선","주문진","진부","춘천","태백","평창","하조대","호산","홍천","화천","횡계","횡성"];
+        let gyunggi = ["가평","고양(백석)","고양(화정)","고천","공도","광명","광명(철산역)","광주(경기)","구리","군포","금촌","기흥역","동두천","부천","서수원","성남","세마역(오산)","송탄","수원터미널","시흥","신갈(용인)","아주대","안산터미널","안성","안양","안양역","안중","양주역","여주","연천","영통","오산","용인","우만동","운정(경기)","월곶삼거리","의정부","이천","일동","죽전","죽전(경전)","청평","평택","평택대","하남BRT","호계동"];
+      
+      // 지역이 변경되면 그 지역에 맞는 터미널을 밑에 표시할거.
+
+      $('#select_sech').change(function(){
+        $('.place_list').children().remove();
+        var selectPlace = [];
+        switch($('#select_sech').val()){
+          case "gangwon":
+            selectPlace.push(...gangwon);
+            break;
+          case "gyunggi":
+           selectPlace.push(...gyunggi);
+            break;
+          case "sudo":
+           selectPlace.push(...sudo);
+            break;
+          case "all":
+            selectPlace.push(...all);
+            break;
+        }          
+          
+        for(var i=0;i<selectPlace.length;i++){
+          if($('.endPlace_search').val() == "" || selectPlace[i].indexOf($('.endPlace_search').val()) >= 0){
+          $('.place_list').append(  
+          "<li class='case'><a href='#' onclick='fnClick(this); return false;' style='height: 50px; width: 100%; padding-right: 20px; margin-left:8px; letter-spacing:0.7px'><span>"+selectPlace[i]+"</span><span><img src='../img/bus/reser.png' alt='' class='img_reser'></span></a></li>");
+          }
+        }  
+          /* 
+           //터미널명 검색부분
+          let selectPlace = {};
+          if(modalStartSelectPlace=="all")
+          {
+            selectPlace.add(강원도);
+            selectPlace.add(경기도);
+            selectPlace.add(경상남도);
+          }
+          else if (modalStartSelectPlace == "gangwon")
+          {
+            selectPlace.add(강원도);
+          }
+          else if (modalStartSelectPlace == "gunggi")
+          {
+            selectPlace.add(경기도);
+          }
+
+         
+          for(var i=0;i<selectPlace.length;i++){
+            if(modalStartSelectPlace == "" || selectPlace[i].indexOf(modalStartSelectPlace) >= 0)
+              {  //[출발지 선택]에 각 주소에 맞는 배열을 
+                //집어 넣는 느낌 이 때 넣어주는 값은 전체적인 코드 자체를 넣어주는 느낌
+                // $('.placeList').append('<li class="case"><a href="#" onclick="addTrmlInfo('i','강원도.val(i)','1242001'); return false;"><span>가평</span><span class="selLocal"><em><img src="/images/ico/select1.png" alt="",""></em></span></a></li>');
+              }
+          }
+          */
+        
+        
+      });
+      
+      function fnClick(_this){
+        //alert($(_this)[0].innerText);
+        
+        if(cookie == "s_dialog"){
+          $('.startSearch').val($(_this)[0].innerText);
+         
+        }else if (cookie == "e_dialog"){
+          $('.endSearch').val($(_this)[0].innerText);
+          
+        }
+        else{
+          return false;
+        }
+        $("#dialog").dialog("close");
+      }
+
+      // 출발역 모달
+      $('.endSearch').click(function(){
+        $('.modal').show();
+      });
+      //도착역 모달
+
+      $(function() {
+        $( "#Dp" ).datepicker({
+          dateFormat: "yy-mm-dd"
+          
+        });
+      });
+      
+      $('#btn_spend').click(function(){
+        window.location.href="busTimetable.html?Sd="+$('#Sd').val()+"&Ed="+$('#Ed').val()+"&Dp="+$('#Dp').val();
+      });
+
+
+      // 다이얼로그
+      $(function() {
+       
+        $("#dialog").dialog({
+          autoOpen: false, // 자동으로 열리지 않도록 설정
+          modal: true, // 모달 다이얼로그로 설정
+          width: 800,
+          height: 900,
+          closeText: "X",
+
+          position: {
+            my: "center",
+            at: "center",
+            of: window
+          },
+          
+          // 다이얼로그가 열릴 때 실행될 함수
+          open: function() {
+            // 다이얼로그가 열릴 때 CSS 속성을 변경하여 화면에 고정
+            $(".ui-widget-overlay").css({
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+              
+            });
+            $(this).parent().css({
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            });
+
+            $(".ui-icon-closethick").hide();
+          },
+          buttons: { // 버튼 추가
+            "확인": function() {
+              $(this).dialog("close"); // 다이얼로그 닫기
+            }
+          }
+        });
+        
+        // 클릭 시 다이얼로그 열기
+        $("[name=start_dialog]").on("click", function() {
+          $("#dialog").dialog("open");
+          cookie = "s_dialog";
+        });
+        $("[name=end_dialog]").on("click", function() {
+          $("#dialog").dialog("open");
+          cookie = "e_dialog";
+        });
+
+        $("#select_sech").change();
+      });
+
+
+
+
+
+    </script>
+</body>
+</html>
