@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/jquery.min.js"></script>
+  <style>
+    #cart {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 100px;
+  box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 40%);
+}
+
+#cart h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 50px;
+}
+
+#cart ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+#cart li{
+  border: 1px solid black;
+  margin: 20px;
+}
+.cart-item {
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.cart-item img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h3 {
+  margin-top: 0;
+}
+
+.item-details p {
+  margin: 0 0 10px;
+}
+
+.item-details input {
+  margin-right: 10px;
+  width: 40px;
+}
+
+.remove-item {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#total-price {
+  margin-top: 20px;
+  text-align: right;
+}
+
+#total-price p {
+  font-weight: bold;
+  margin: 0;
+}
+
+  </style>
+</head>
+<body>
+  <div id="cart">
+    <h2>장바구니</h2>
+    <ul>
+      <li>
+        <div class="cart-item">
+          <img src="../img/hotel_img/1.webp" alt="Product Image">
+          <div class="item-details">
+            <h3>오크우드프리미엄</h3>
+            <p>가격: 30000원</p>
+            <input type="number" value="1" min="1" max="10">
+            <button class="remove-item">삭제</button>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="cart-item">
+          <img src="../img/lesuire/fishing.jpg" alt="Product Image">
+          <div class="item-details">
+            <h3>낙씨</h3>
+            <p>가격: 30000원</p>
+            <input type="number" value="1" min="1" max="10">
+            <button class="remove-item">삭제</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div id="total-price">
+      <p>합계: 60000원</p>
+      <button id="checkout">결제하기</button>
+    </div>
+  </div>
+  
+</body>
+<script>
+  $(document).ready(function() {
+  // Remove item from cart
+  $('.remove-item').on('click', function() {
+    $(this).closest('.cart-item').remove();
+    updateTotal();
+  });
+
+  // Update total price when quantity is changed
+  $('input[type="number"]').on('input', function() {
+    updateTotal();
+  });
+
+  // Update total price function
+  function updateTotal() {
+    var totalPrice = 0;
+    $('.cart-item').each(function() {
+      var price = parseFloat($(this).find('p').text().replace('가격: ', ''));
+      var quantity = parseInt($(this).find('input').val());
+      totalPrice += price * quantity;
+    });
+    $('#total-price p').text('합계: ' + totalPrice+'원');
+  }
+});
+
+</script>
+</html>
