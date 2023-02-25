@@ -19,49 +19,58 @@
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-          <a href="#">
-            <p>LOGO</p>
-          </a>
-          <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt="">
-          <nav>
-            <div class="dropmenu">
-              <ul id="dm_ul">
-                
-                <li><a href="#">국내숙소</a>
-                  <ul>
-                    <li><a href="#">모텔</a></li>
-                    <li><a href="#">호텔</a></li>
-                    <li><a href="#">게스트하우스</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">레저/전시</a>
-                  <ul>
-                    <li><a href="#">레저</a></li>
-                    <li><a href="#">전시</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">교통</a>
-                  <ul>
-                    <li><a href="#">예약하기</a></li>
-                    <li><a href="#">예약확인</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">더보기</a>
-                  <ul>
-                    <li><a href="#">비회원 에약</a></li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">qna</a></li>
-                  </ul>
-                </li>
-                <li><a href="#" class="nav-login">로그인</a>
-                </li>
+
+     <header>
+      <a href="#">
+        <p><img src="../img/travel.png" alt="" style="width: 50px; height: 50px;"></p>
+      </a>
+      
+      <!-- <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt=""> -->
+      <nav>
+        <div class="dropmenu">
+          <ul id="dm_ul">
+            
+            <li><a href="#">국내숙소</a>
+              <ul>
+                <li><a href="#">모텔</a></li>
+                <li><a href="#">호텔</a></li>
+                <li><a href="#">게스트하우스</a></li>
               </ul>
-          </nav>
-        </header>
-      </div>
-      <!-- 헤더 -->
+            </li>
+            <li><a href="#">레저/전시</a>
+              <ul>
+                <li><a href="#">레저</a></li>
+                <li><a href="#">전시</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교통</a>
+              <ul>
+                <li><a href="../html/bus-reservation.html">예약하기</a></li>
+                
+                <li><a href="#">예약확인</a></li>
+              </ul>
+            </li>
+            <li><a href="#">더보기</a>
+              <ul>
+                <li><a href="#">비회원 에약</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">qna</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="nav-login">로그인</a>
+            </li>
+            <li>
+              <div class="nav-search">
+              <form action="" class="nav-search-container">
+                <input type="text" class="nav-search-input" placeholder="검색">
+                <button type="submit" class="search-btn"><img src="../img/search.png" alt="버튼"></button>
+            </form>
+            </div >
+            </li>
+          </ul>
+      </nav>
+    </header>
     
     <div class="container-all">
         <div class="container">
@@ -118,9 +127,7 @@
                         <div class="refreshBox">
                             <a href="#">
                                 <button type="button" class="refresh">
-                                    
                                     <img class="refresh-icon" src="../html/bus/refresh.png">
-
                                 </button>
                             </a>
                         </div>
@@ -421,14 +428,57 @@
             </div>
         </div>
     </div>
-
+    
 
 
     <footer>
-        
-    </footer>
+        <hr>
+       <div class="footer-container-box">
+         <div class="about-container ft-box"><h2>회사 소개</h2>
+           <ul>
+             <li>기업개요</li>
+             <li>연혁</li>
+             <li>찾아오시는길</li>
+           </ul>
+         </div>
+         <div class="customer-container ft-box"><h2>고객서비스</h2>
+           <ul>
+             <li>공지사항</li>
+             <li>비회원 예약조회</li>
+             <li>자주물어보는 질문</li>
+             <li>1대1 문의</li>
+             <li>환불</li>
+           </ul>
+         </div>
+         <div class="contact-container ft-box"><h2>contact</h2>
+           <div class="contact">
+             <ul>
+               <li>tel : 010-0000-0000</li>
+               <li>email : www@naver.com</li>
+               <li><img src="../img/sns/facebook.png" alt=""></li>
+               <li><img src="../img/sns/instagram.png" alt=""></li>
+               <li><img src="../img/sns/youtube.png" alt=""> </li>
+               <li><img src="../img/sns/kakao-talk.png" alt=""></li>
+             </ul>
+           </div>
+          </div>  
+       </div>
+       <hr>
+       <div class="company-box">
+         <div class="company-title"><img src="../img/travel.png" alt=""></div>
+         <div class="company-introduce">
+           <span>이용약관</span>
+           <span>개인정보정책</span>
+           <span>기타정책</span>
+         </div>
+      
+       </div>
+      </footer>
+   
 
     <script>
+
+
          var pash = new URL(window.location.href).searchParams;
                         //내위치를 현재보고있는 사이트로 옮기고.파라미터를가져오는 명령어
         //pash.get("Sd");
@@ -449,6 +499,21 @@
             location.reload();
         });
         
+
+        $(".dropmenu ul li").hover(function() {
+  $(this)
+    .find("ul")
+    .stop()
+    .fadeToggle(300);
+});
+
+$('.nav-login').click(function(){
+  $('.modal-login').show();
+});
+
+  $('.exit-btn').click(function(){
+  $('.modal-login').hide();
+})
     </script>
 </body>
 </html>

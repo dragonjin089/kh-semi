@@ -18,121 +18,155 @@
       a:visited,
       a:hover,
     
-      /*헤더 부분*/
-      .wrap {
-        background-color: white;
-      }
-      
-      header {
-        width: 1000px;
-        margin: 0 auto;
-        padding: 25px 0;
-        font-size: 30px;
-        color: #555;
+      .nav-search-container{
         position: relative;
-      }
-      
-      /*찾기 이미지*/
-      header img {
-        width: 40px;
-        position: absolute;
-        top: 25px;
-        right: 0;
-        z-index: 10;
-        opacity: 0.5;
-      }
-      
-      header img:hover {
-        opacity: 1;
-      }
-      
-      #dm_ul {
-        min-width: 300px;
-        position: absolute;
-        right: 100px;
-        top: 20px;
-      }
-      
-      .dropmenu ul ul {
-        position: absolute;
-        display: none;
-        z-index: 3; /*아래의 이미지 보다 위로 올리기*/
-        background: white;
-        padding: 0 20px 10px;
-        transform: translate(-20px, 20px);
-      }
-      
-      .dropmenu ul ul li {
-        display: block;
-      }
-      
-      .dropmenu ul li {
-        display: inline-block;
-      }
-      
-      .dropmenu ul li a {
-        display: block;
-        width: 150px;
-        color: #555;
-        font-size: 0.9rem;
-        line-height: 43px;
-        text-decoration: none;
-      }
-      
-      .dropmenu ul li a:hover {
-        color: #000;
-      }
-      
-      /*찾기 이미지*/
-      header img {
-        width: 40px;
-        position: absolute;
-        top: 25px;
-        right: 0;
-        z-index: 10;
-        opacity: 0.5;
-      }
-      
-      header img:hover {
-        opacity: 1;
-      }
-      
-      #dm_ul {
-        min-width: 300px;
-        position: absolute;
-        right: 100px;
-        top: 20px;
-      }
-      
-      .dropmenu ul ul {
-        position: absolute;
-        display: none;
-        z-index: 3; /*아래의 이미지 보다 위로 올리기*/
-        background: white;
-        padding: 0 20px 10px;
-        transform: translate(-20px, 20px);
-      }
-      
-      .dropmenu ul ul li {
-        display: block;
-      }
-      
-      .dropmenu ul li {
-        display: inline-block;
-      }
-      
-      .dropmenu ul li a {
-        display: block;
-        width: 150px;
-        color: #555;
-        font-size: 0.9rem;
-        line-height: 43px;
-        text-decoration: none;
-      }
-      
-      .dropmenu ul li a:hover {
-        color: #000;
-      }
+        width: 200px;
+        height: 50px;
+        }
+        .nav-search-input{
+          border-radius: 10px;
+          width: 100%;
+          height: 30px;
+          font-size: 15px;
+          border: 2px solid black;
+          outline: 0;
+          line-height: 30px;
+        }
+        .nav-search .search-btn{
+            position: absolute; width: 20px; height: 20px; background: none;
+            color: rgb(255, 255, 255); border: 0; cursor: pointer;
+            top: 15px; bottom: 0px; right:20px;
+        }
+        .nav-search img{  
+          width: 20px; height: 20px;
+          margin-bottom: 0px;
+          margin-left: 15px;
+        }
+    /*헤더 부분*/
+    .wrap {
+      background-color: white;
+    }
+    
+    header {
+      /* width: 100%; */
+      min-width: 1000px;
+      margin: 0 auto;
+      padding: 25px 0;
+      font-size: 30px;
+      color: #555;
+      position: relative;
+      box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+    }
+    
+    /*찾기 이미지*/
+    /* header input {
+      width: 40px;
+      position: absolute;
+      top: 25px;
+      right: 0;
+      z-index: 10;
+      opacity: 0.5;
+    }
+    
+    header img:hover {
+      opacity: 1;
+    } */
+    
+    #dm_ul {
+      min-width: 300px;
+      position: absolute;
+      right: 100px;
+      top: 20px;
+    }
+    
+    .dropmenu ul ul {
+      position: absolute;
+      display: none;
+      z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+      background: white;
+      padding: 0 20px 10px;
+      transform: translate(-20px, 20px);
+      box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+    }
+    
+    .dropmenu ul ul li {
+      display: block;
+    }
+    
+    .dropmenu ul li {
+      display: inline-block;
+    }
+    
+    .dropmenu ul li a {
+      display: block;
+      width: 130px;
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 43px;
+      text-decoration: none;
+    }
+    
+    .dropmenu ul li a:hover {
+      color: #000;
+    }
+    /* 풋터 */
+    footer{
+    width: 100%;
+    height: 350px;
+    background: white;
+    margin-top: 30px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-top: 30px;
+    }
+    .footer-container-box{
+      display: flex;
+      margin:  0 10%;
+      text-align: left;
+      justify-content: space-between;
+    }
+    
+    .ft-box{
+      background-color: white;
+      width:  20%;
+      height: 250px;
+      display: inline-block;
+    }
+    
+    .ft-box h2{
+      font-size: 30px;
+      letter-spacing: 2px;
+    
+    }
+    .ft-box li{
+      margin-top: 3px;
+      list-style: none;
+    }
+    .company-box{
+      display: inline-block;
+    
+    }
+    .company-title{
+      display: inline-block;
+      margin : 0 100px;
+      width: 200px;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+    }
+    .company-introduce{
+      display: inline-block;
+    
+    }
+    .company-introduce span{
+      margin-left : 10px
+    }
+    .contact ul li img{
+      width: 20px;
+      height: 20px;
+    }
+    /* 풋터 끝 */
     /* ------------------------------------------------------------------ */
     .container-all{
         padding: 0px 50px 0px 50px; height: 800px;
@@ -146,9 +180,7 @@
     /* 지역명 */
     .whereBox{
         width: 100%; height: 100px;
-        
         background: url(../img/travelad_img/seoul.jpg)0 0 no-repeat;
-
         border-radius: 2px;
         margin-bottom: 3px;
     }
@@ -285,6 +317,7 @@
         top: 5px;left: 8px;
       
         background: url(../html/bus/night.png) 0 0 no-repeat;
+
         background-size: auto 100%;
         width: 14px; height: 14px;
     }
