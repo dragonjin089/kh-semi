@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <title>버스 좌석선택</title>
+  <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li{list-style: none;}
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: white;
+}
+.clearfix{
+      content:'';
+      display:block;
+      clear:both;
+}
+a:link {
+  color: #333;
+  text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+  color: #333;
+}
+.nav-search-container{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    }
+    .nav-search-input{
+      border-radius: 10px;
+      width: 100%;
+      height: 30px;
+      font-size: 15px;
+      border: 2px solid black;
+      outline: 0;
+      line-height: 30px;
+    }
+    .nav-search .search-btn{
+        position: absolute; width: 20px; height: 20px; background: none;
+        color: rgb(255, 255, 255); border: 0; cursor: pointer;
+        top: 15px; bottom: 0px; right:20px;
+    }
+    .nav-search img{  
+      width: 20px; height: 20px;
+      margin-bottom: 0px;
+      margin-left: 15px;
+    }
+/*헤더 부분*/
+.wrap {
+  background-color: white;
+}
+
+header {
+  /* width: 100%; */
+  min-width: 1000px;
+  margin: 0 auto;
+  padding: 25px 0;
+  font-size: 30px;
+  color: #555;
+  position: relative;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+/*찾기 이미지*/
+/* header input {
+  width: 40px;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+header img:hover {
+  opacity: 1;
+} */
+
+#dm_ul {
+  min-width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+.dropmenu ul ul {
+  position: absolute;
+  display: none;
+  z-index: 3; /*아래의 이미지 보다 위로 올리기*/
+  background: white;
+  padding: 0 20px 10px;
+  transform: translate(-20px, 20px);
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+}
+
+.dropmenu ul ul li {
+  display: block;
+}
+
+.dropmenu ul li {
+  display: inline-block;
+}
+
+.dropmenu ul li a {
+  display: block;
+  width: 130px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 43px;
+  text-decoration: none;
+}
+
+.dropmenu ul li a:hover {
+  color: #000;
+}
+/* 풋터 */
+footer{
+width: 100%;
+height: 350px;
+background: white;
+margin-top: 30px;
+display: inline-block;
+margin: 0;
+padding: 0;
+margin-top: 30px;
+}
+.footer-container-box{
+  display: flex;
+  margin:  0 10%;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.ft-box{
+  background-color: white;
+  width:  20%;
+  height: 250px;
+  display: inline-block;
+}
+
+.ft-box h2{
+  font-size: 30px;
+  letter-spacing: 2px;
+
+}
+.ft-box li{
+  margin-top: 3px;
+  list-style: none;
+}
+.company-box{
+  display: inline-block;
+
+}
+.company-title{
+  display: inline-block;
+  margin : 0 100px;
+  width: 200px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+.company-introduce{
+  display: inline-block;
+
+}
+.company-introduce span{
+  margin-left : 10px
+}
+.contact ul li img{
+  width: 20px;
+  height: 20px;
+}
+/* 풋터 끝 */
+/*  모달로그인 */
+.modal-login{
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  top:0%; left: 0%; 
+  
+  display: none;
+  z-index: 3000;
+}
+.modal_content{
+  position: relative;
+width:500px; height:500px;
+background:#fff; border-radius:10px;
+top:30%; left:40%;
+text-align:left;
+box-sizing:border-box;
+line-height:23px; 
+padding-top: 100px;
+
+}
+
+
+.modal_content .exit-btn{
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  right: 0;
+  top: 0;
+  position: absolute;
+  background: white;
+  border: 0px;
+ 
+}
+.login-container h1{
+ margin-bottom: 20px;
+ font-size: 50px;
+ letter-spacing: 3px;
+ text-align: center;
+}
+.login-container input{
+width: 300px; height:40px; 
+border-radius: 10px; 
+font-size : 20px;
+margin-top: 35px;
+text-align: left;
+margin-left: 30px;
+
+}
+.login-container .login-btn{
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    right: 30px;
+    top: 40%;
+    border-radius: 10px;
+}
+.join-find{
+    margin-top: 30px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+  }
+  /* 모달로그인 끝 */
+/* ------------------------------------------------------------------ */
+  /* 좌석예약 */
+  .container{ 
+    width: 100%; height: 800px; top: 30px;
+    padding: 0px 50px 0px 50px; margin-bottom: 50px;
+    position: relative;
+  }
+  .display{
+    width: 100%; height: 100px;
+    background: url(../img/travelad_img/seoul.jpg)0 0 no-repeat;
+    margin-bottom: 5px;
+    border-radius: 2px;
+  }
+  .display_title{
+    color: #fff; margin-left: 20px; line-height: 130px;
+  }
+  .contentBox{
+    display: flex;
+  }
+  /* 필터상자 */
+  .filterBox{ box-shadow:3px 3px 5px gray; 
+        width: 14.7%; height: 656px; min-width: 230px;
+        background-color: teal;
+        border-radius: 3px;
+        color: #fff;
+    }
+    /* 필터날짜 */
+    .today{ font-size: 20px; text-align: left;
+        width: 100%; height: 50px; line-height: 50px;
+        padding-top: 15px; margin-top: 15px; margin-left: 8px;
+    }
+    /* 필터 출발지 도착지 */
+    .promotion{ 
+        width: 230px; height: 200px;
+    }
+    .promotion-place{  
+        display: flex; height: 150px;  padding: 0px 15px 0px 30px;
+      }
+    .roote{ text-align: center; background-color: #fff; color: #004932; border-radius: 5px;
+        width: 35%; height: 27px; margin-top: 30px; font-size: 20px;
+    }
+    .roote-clear{  padding-top: 10px;
+        width: 28%; height: 50px; margin-top: 21px; text-align: center;
+    }
+    .place{display: block; margin-top:15px; color: #fff; letter-spacing: -2px;width: 80px; text-align: left;}
+    
+    /* 필터 시간 */
+    .delay{ padding-top: 10px;
+        width: 100%; height: 20px; display: block; text-align: right;
+        font-size: 14px; margin-bottom: 7px;
+    }
+    /* 필터 거리 */
+    .distance{  text-align: right;
+        width: 100%; height: 20px; display: block;
+        font-size: 14px;
+    }
+    /* 필터 요금 */
+    .payInfo{
+        width: 100%; height: 100%; 
+    }
+    .nomalPay{text-align: right; margin-top: 30px;}
+    .payInfo-text{ text-align: left; position: relative; top: 25px; 
+        
+    }
+    .pay-clear{width: 100%; height: 10px; display: block;}
+    dt{text-align: left;}
+    
+    dd{text-align: right; position: relative;top: -25px;}
+    /* 필터상자 끝*/
+   .seat_container{
+      border: 2px solid #e6e6e6;
+      width: 100%; height: 656px; min-height: 640px; max-width: 1635px;
+      margin-left: 50px; border-radius: 3px;
+      position: relative; box-shadow: 3px 3px 5px gray; 
+    }
+    .seatHeader{
+      border-bottom: 2px solid #e6e6e6;
+      width: 100%; height: 80px;
+        position: relative; 
+    }
+    .seatHeader::after{display: block; content: ""; clear: both;}
+    /* 새로고침 */
+    .refreshBox{ 
+        float: none;
+        width: 88px; height: 100%;
+        position: absolute; top: 0; left: 0;
+        z-index: 100;
+        padding: 10px; box-sizing: border-box;
+    }
+    .refresh{
+        width: 65px;height: 100%;
+        background-color: #f3f4f6;
+        border: 0; cursor: pointer;
+        position: relative; display: inline-block; vertical-align: middle; line-height: 1.2;
+        
+    }
+    .refresh-icon{cursor: pointer;}
+    /* 잔여좌석텍스트 */
+    .remaining{
+        float: left; position: relative; display: block;
+        height: 100%; width: 100%;
+        font-size: 0; 
+        text-align: center;  
+    }
+    .remaining_text{font-size: 22px; font-weight: bold; text-align: center; line-height: 90px;}
+    /* 좌석상세 */
+    .seatReservationBox{
+      width: 100%; height: 570px;
+      padding-left: 100px;
+      display: flex;
+    }
+    .seatBackground{
+      width: 30%; height: 570px;
+      background: url(../html/bus/seatBackground.png)50% 0 no-repeat;
+      
+    }
+    .seatList{
+      width: 250px;
+      margin: 0 auto;
+      padding: 82px 20px 0 20px;
+      font-size: 0;
+      box-sizing: border-box;
+    }
+    .seatBox{
+      display: inline-block;
+      position: relative;
+      width: 40px; height: 45px; margin-bottom: 4px;
+    }
+    [name=seatIn]{ 
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+    input[type=":checkbox"]{
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+      width: 13px;
+      height: 13px;
+      line-height: 13px;
+    }
+    .seatBox label{
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url(../html/bus/busSeat.png) 0 0 no-repeat;
+      text-align: center;
+      font-size: 12px;
+      line-height: 35px;
+      cursor: pointer;
+    }
+    .seat45 .seatList span.last_seat:nth-child(4n+3) {
+    margin-left: 2px;
+    }
+    .seat45 .seatList span:nth-child(4n+3) {
+    margin-left: 44px;
+    }
+    
+    .seatBox input:checked + label {
+      background-position: 0 -48px;
+      font-weight: bold;
+      color: #000;
+    }
+    .seatBox input:checked + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 20px;
+    height: 21px;
+    background: url(../html/bus/busChecked.png) 0 0 no-repeat;
+    } 
+
+    /* 선택좌석 */
+    .selectSeat_detailBox{
+      width: 40%; height: 100%;
+      margin-left: 70px;
+    }
+    .selectSeatBox{ 
+      width: 100%; height: 90px;
+      padding: 10px 10px 5px 15px; margin-bottom: 5px;
+      border-left: 1.5px solid #e6e6e6;
+      border-bottom: 1.5px solid #e6e6e6;
+      border-right: 1.5px solid #e6e6e6;
+      box-shadow: 0px 1px 1px  gray;
+    }
+    .selectSeatBox span{ color:#5f99c9;}
+    #selectSeatBox_title{margin-bottom: 15px; font-size: 16px; font-weight: bold;}
+    /* 탑승인원 및 요금 */
+    .board_payBox{
+      width: 100%; height: 160px;
+      padding: 10px 30px 5px 15px; margin-bottom: 4px;
+      border-left: 1.5px solid #e6e6e6;
+      border-bottom: 1.5px solid #e6e6e6;
+      border-right: 1.5px solid #e6e6e6;
+      box-shadow: 0px 1px 1px  gray;
+    }
+    .board_payBox ul{font-weight: bold; font-size: 16px;}
+    .board_payBox li{color:#5f99c9; margin-top: 7px; font-weight: normal; font-size: 15px;}
+    .board_payBox li span{ float: right; color: #000;}
+    .board_payBox li button{ cursor: pointer;
+      width: 18px; height: 18px; font-size: 13px; 
+      border: 1.5px solid #e6e6e6; border-radius: 5px;
+    }
+    /* 할인 */
+    .seat_discountBox{
+      width: 100%; height: 90px;
+      padding: 10px 30px 5px 15px; margin-bottom: 4px;
+      border-left: 1.5px solid #e6e6e6;
+      border-bottom: 1.5px solid #e6e6e6;
+      border-right: 1.5px solid #e6e6e6;
+      box-shadow: 0px 1px 1px  gray;
+    }
+    .seat_discountBox strong{font-size: 16px; font-weight: bold;}
+    .seat_discountBox span{display: block; margin-top: 10px; margin-left: 40px; font-size: 15px;}
+    .seat_discountBox input{ margin-left: 5px;}
+    #dicount_example{font-size: 12px; text-align: left;margin-top: 2px; margin-left: 60px;}
+    /* 총 결제 */
+    .total_payBox{ position: relative;
+      width: 100%; height: 221px;
+      padding: 20px 30px 5px 25px; margin-bottom: 2px;
+      border-left: 1.5px solid #e6e6e6;
+      border-right: 1.5px solid #e6e6e6;
+      box-shadow: 0px 1px 1px  gray;
+    }
+    .total_payBox strong{font-size: 20px; font-weight: bold;}
+    .total_payBox span{
+      display: block; text-align: right;
+      font-size: 30px; margin-top: 50px;
+    }
+    #complete{
+      float: right; width: 40%; height: 25%; text-align: center; line-height: 53px;
+      background: #e6e6e6; border-radius: 5px; margin-top: 25px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <div class="wrap">
+    <header>
+      <a href="#">
+        <p><img src="../img/travel.png" alt="" style="width: 50px; height: 50px;"></p>
+      </a>
+      
+      <!-- <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-128.png" alt=""> -->
+      <nav>
+        <div class="dropmenu">
+          <ul id="dm_ul">
+            
+            <li><a href="#">국내숙소</a>
+              <ul>
+                <li><a href="#">모텔</a></li>
+                <li><a href="#">호텔</a></li>
+                <li><a href="#">게스트하우스</a></li>
+              </ul>
+            </li>
+            <li><a href="#">레저/전시</a>
+              <ul>
+                <li><a href="#">레저</a></li>
+                <li><a href="#">전시</a></li>
+              </ul>
+            </li>
+            <li><a href="#">교통</a>
+              <ul>
+                <li><a href="../html/bus-reservation.html">예약하기</a></li>
+                <li><a href="#">예약확인</a></li>
+              </ul>
+            </li>
+            <li><a href="#">더보기</a>
+              <ul>
+                <li><a href="#">비회원 에약</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">qna</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="nav-login">로그인</a>
+            </li>
+            <li>
+              <div class="nav-search">
+              <form action="" class="nav-search-container">
+                <input type="text" class="nav-search-input" placeholder="검색">
+                <button type="submit" class="search-btn"><img src="../img/search.png" alt="버튼"></button>
+            </form>
+            </div >
+            </li>
+          </ul>
+      </nav>
+    </header>
+  </div>
+  <!-- 헤더 끝 -->
+
+  <!-- 좌석 예약 -->
+  <div class="container">
+    <div class="display">
+      <h1 class="display_title">좌석예약</h1>
+    </div>
+    <div class="contentBox">
+      <!-- 필터박스 -->
+      <div class="filterBox">
+        <p class="today" id="recive_day">2023.02.16.목</p>
+        <hr>
+        <div class="promotion">
+            <div class="promotion-place">
+                <p class="roote">
+                    <span class="point" >출발지</span>
+                    <span class="place" id="sPlace">서울</span>
+                </p>
+                <p class="roote-clear">  ←--→ </p>
+                <p class="roote">
+                    <span class="point">도착지</span>
+                    <span class="place" id="ePlace">부산</span>
+                </p>
+            </div>
+            <hr>
+
+            <span class="delay">1시간 40분 소요</span>
+            <span class="distance">1.34km</span>
+        </div>
+        
+        <div class="payInfo">
+            <div class="nomalPay">
+                <p class="payInfo-text">요금정보</p>
+                <span class="nomalPay-text">(일반요금)</span>
+            </div>
+            <hr>
+            <div class="pay"></div>
+            <span class="pay-clear"></span>
+            <dt>우등</dt>
+            <dd>10,000원</dd>
+            <dt>고속</dt>
+            <dd>10,000원</dd>
+            <dt>심야우등</dt>
+            <dd>10,000원</dd>
+            <dt>심야우등할증</dt>
+            <dd>10,000원</dd>
+            <dt>심야고속</dt>
+            <dd>10,000원</dd>
+            <dt>심야고속할증</dt>
+            <dd>10,000원</dd> 
+        </div>
+
+      </div>
+      <!-- 필터박스 끝-->
+      <!-- 좌석예약 -->
+      <div class="seat_container">
+        <!-- 좌석예약박스 헤더-->
+        <div class="seatHeader">
+          <div class="refreshBox">
+            <a href="#">
+                <button type="button" class="refresh">
+                    <img class="refresh-icon" src="../html/bus/refresh.png">
+                </button>
+            </a>
+          </div>
+          <div class="remaining">
+            <span class="remaining_text">잔여 10석/전체 40석</span>
+          </div>
+        </div>
+        <!-- 좌석상세 -->
+        <div class="seatReservationBox">
+          <div class="seatBackground seat45">
+            <div class="seatList">
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="1">
+                <label for="">
+                  1
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="2">
+                <label for="">
+                  2
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="3">
+                <label for="">
+                  3
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="4">
+                <label for="">
+                  4
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="5">
+                <label for="">
+                  5
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="6">
+                <label for="">
+                  6
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="7">
+                <label for="">
+                  7
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="8">
+                <label for="">
+                  8
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="9">
+                <label for="">
+                  9
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="10">
+                <label for="">
+                  10
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="11">
+                <label for="">
+                  11
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="12">
+                <label for="">
+                  12
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="13">
+                <label for="">
+                  13
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="14">
+                <label for="">
+                  14
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="15">
+                <label for="">
+                  15
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="16">
+                <label for="">
+                  16
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="17">
+                <label for="">
+                  17
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="18">
+                <label for="">
+                  18
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="19">
+                <label for="">
+                  19
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="20">
+                <label for="">
+                  20
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="21">
+                <label for="">
+                  21
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="22">
+                <label for="">
+                  22
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="23">
+                <label for="">
+                  23
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="24">
+                <label for="">
+                  24
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="25">
+                <label for="">
+                  25
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="26">
+                <label for="">
+                  26
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="27">
+                <label for="">
+                  27
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="28">
+                <label for="">
+                  28
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="29">
+                <label for="">
+                  29
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="30">
+                <label for="">
+                  30
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="31">
+                <label for="">
+                  31
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="32">
+                <label for="">
+                  32
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="33">
+                <label for="">
+                  33
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="34">
+                <label for="">
+                  34
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="35">
+                <label for="">
+                  35
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="36">
+                <label for="">
+                  36
+                </label>
+              </span>
+              <span class="seatBox">
+                <input type="checkbox" name="seatIn" value="37">
+                <label for="">
+                  37
+                </label>
+              </span>
+              <span class="seatBox last_seat">
+                <input type="checkbox" name="seatIn" value="38">
+                <label for="">
+                  38
+                </label>
+              </span>
+              <span class="seatBox last_seat">
+                <input type="checkbox" name="seatIn" value="39">
+                <label for="">
+                  39
+                </label>
+              </span>
+              <span class="seatBox last_seat">
+                <input type="checkbox" name="seatIn" value="40">
+                <label for="">
+                  40
+                </label>
+              </span>
+              <span class="seatBox last_seat">
+                <input type="checkbox" name="seatIn" value="41">
+                <label for="">
+                  41
+                </label>
+              </span>
+          
+              
+            </div>
+          </div>
+          <div class="selectSeat_detailBox">
+            <!-- 선택좌석 -->
+            <div class="selectSeatBox">
+              <h4 id="selectSeatBox_title">선택좌석</h4>
+              <span id="seat_num"></span>
+            </div>
+            <!-- 탑승인원 및 요금 -->
+            <div class="board_payBox">
+              <ul>탑승인원 및 요금
+                <li>
+                  일반 <label name="useCount">0</label>명
+                  <button class="plus" value="10000">+</button>
+                  <button class="minus" value="10000">-</button>
+                  <span>0원</span>
+                </li>
+                <li>보훈 <label name="useCount">0</label>명
+                  <button class="plus" value="5000">+</button>
+                  <button class="minus" value="5000">-</button>
+                  <span>0원</span>
+                </li>
+                <li>초등생 <label name="useCount">0</label>명
+                  <button class="plus" value="3000">+</button>
+                  <button class="minus" value="3000">-</button>
+                  <span>0원</span>
+                </li>
+                <li>중고생 <label name="useCount">0</label>명
+                  <button class="plus" value="4000">+</button>
+                  <button class="minus" value="4000">-</button>
+                  <span>0원</span>
+                </li>
+              </ul>
+            </div>
+            <!-- 할인 -->
+            <div class="seat_discountBox">
+              <strong>할인선택</strong>
+              <span>
+                할인미적용<input type="radio">
+              </span>
+              <span id="dicount_example">- 가장 높은 할인율이 자동 적용됩니다. (중복불가)</span>
+            </div>
+            <!-- 총 결제 -->
+            <div class="total_payBox">
+              <strong>총 결제금액</strong>
+              <input type="hidden" id="total_pay_hid" value="0">
+              <span id="total_pay">0원</span>
+              <a href="#" id="complete">선택완료</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 좌석예약 끝 -->
+
+<!-- 풋터 -->
+<footer>
+  <hr>
+ <div class="footer-container-box">
+   <div class="about-container ft-box"><h2>회사 소개</h2>
+     <ul>
+       <li>기업개요</li>
+       <li>연혁</li>
+       <li>찾아오시는길</li>
+     </ul>
+   </div>
+   <div class="customer-container ft-box"><h2>고객서비스</h2>
+     <ul>
+       <li>공지사항</li>
+       <li>비회원 예약조회</li>
+       <li>자주물어보는 질문</li>
+       <li>1대1 문의</li>
+       <li>환불</li>
+     </ul>
+   </div>
+   <div class="contact-container ft-box"><h2>contact</h2>
+     <div class="contact">
+       <ul>
+         <li>tel : 010-0000-0000</li>
+         <li>email : www@naver.com</li>
+         <li><img src="../img/sns/facebook.png" alt=""></li>
+         <li><img src="../img/sns/instagram.png" alt=""></li>
+         <li><img src="../img/sns/youtube.png" alt=""> </li>
+         <li><img src="../img/sns/kakao-talk.png" alt=""></li>
+       </ul>
+     </div>
+    </div>  
+ </div>
+ <hr>
+ <div class="company-box">
+   <div class="company-title"><img src="../img/travel.png" alt=""></div>
+   <div class="company-introduce">
+     <span>이용약관</span>
+     <span>개인정보정책</span>
+     <span>기타정책</span>
+   </div>
+
+ </div>
+</footer>
+<!-- 풋터 끝-->
+
+<!-- 모달로그인 -->
+<div class="modal-login">
+  <div class="modal_content">
+    <button class="exit-btn">x</button>
+    <form class="login-container">
+          <h1>로그인</h1>
+          <input type="text" name="id" placeholder="아이디"><br>
+          <input type="password" name="pw" placeholder="비밀번호"><br>
+          <button class="login-btn">로그인</button>
+          <div class="join-find">
+            <a href="../html/signup-1.html" style="background: skyblue; border: 1px solid skyblue; border-radius: 10px;">개인 회원가입</a>
+            <a href="../html/signup-2.html" style="background: tan; border: 1px solid tan; border-radius: 10px;">사업자 회원가입</a>
+          </div>
+          <div class="join-find">
+            <a href="#">아이디/비밀번호찾기</a>
+          </div>
+    </form>
+  </div>
+</div>
+<!-- 모달로그인 끝  -->
+
+
+
+
+
+
+
+</body>
+<script>
+  // 헤더 & 모달
+  $(".dropmenu ul li").hover(function() {
+  $(this)
+    .find("ul")
+    .stop()
+    .fadeToggle(300);
+});
+$('.nav-login').click(function(){
+  $('.modal-login').show();
+});
+
+  $('.exit-btn').click(function(){
+  $('.modal-login').hide();
+})
+
+
+// 버스 시간표에서 데이터 받기
+var pash = new URL(window.location.href).searchParams;
+                        //내위치를 현재보고있는 사이트로 옮기고.파라미터를가져오는 명령어
+//pash.get("Sd");
+$('#sPlace').text(pash.get("Sd"));
+$('#ePlace').text(pash.get("Ed"));
+$('#recive_day').text(pash.get("Dp"));
+        
+$('.seatBox').click(function(){
+  var SetInCheck = $(this).find($('[name="seatIn"]:checkbox'));
+  if(SetInCheck.attr("checked") == "checked"){
+    //SetInCheck.removeAttr("checked");
+    SetInCheck.attr("checked",false);
+    
+  }
+  else {
+    SetInCheck.attr("checked",true);
+  };
+  var seatCount =[];
+//   for(var i=0;i<$(('[name="seatIn"]:checked')).length;i++)
+// {
+//   $($(('[name="seatIn"]:checked'))[i]).val() + "번"
+// }  
+  if($(('[name="seatIn"]:checked')).length == 0)
+  {
+    $('#seat_num').text("");  
+  }
+  else {
+    $('#seat_num').text(
+      //$(('[name="seatIn"]:checked')).val()+"번"
+      //$(('[name="seatIn"]:checked')).serialize().replaceAll("seatIn=","").split('&').join('번 ') + '번'
+      
+      $(('[name="seatIn"]:checked')).serialize().replaceAll("seatIn=","").replaceAll('&','번 ') + '번'
+      //(input 태그로 여러데이터가 들어가기 때문에 배열로되어있고 대신 세로배열).
+      //(직렬화(세로배열을 가로로 한줄로 만든다는 말)).
+      //(원하는 글자,바꾸는 글자)
+      //
+    );
+  }
+});
+$('.refresh-icon').click(function(){
+  location.reload();
+});
+
+$('.plus').click(function(){
+  var __num = $($(this).parent().children()[0]).text();
+  __num++;
+  $($(this).parent().children()[0]).text(__num);
+  var __amt = $(this).val() * __num;
+  $($(this).parent().children()[3]).text(__amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "원");
+
+  if(__num != 0)
+  {
+    var __total_pay = Number($("#total_pay_hid").val());
+    __total_pay = __total_pay + Number($(this).val());
+    $("#total_pay_hid").val(__total_pay);
+    $("#total_pay").text(__total_pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원");
+  }
+});
+$('.minus').click(function(){
+  var __num = $($(this).parent().children()[0]).text();
+  __num--;
+  
+  if(__num >= 0)
+  {
+    var __total_pay = Number($("#total_pay_hid").val());
+    __total_pay = __total_pay - Number($(this).val());
+    $("#total_pay_hid").val(__total_pay);
+    $("#total_pay").text(__total_pay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원");
+  }
+
+  if(__num < 0)
+    __num = 0;
+  $($(this).parent().children()[0]).text(__num);
+  var __amt = $(this).val() * __num;
+  $($(this).parent().children()[3]).text(__amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "원");//3자릿수 콤마
+  
+});
+  //버튼을 누르면 일반 0명이 1명으로 카운트가 되고 클릭숫자가 더해지면 일반 n명도 숫자가 더해진다.
+
+
+</script>
+</html>
