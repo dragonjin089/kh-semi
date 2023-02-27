@@ -514,6 +514,9 @@ $('.nav-login').click(function(){
   $('.exit-btn').click(function(){
   $('.modal-login').hide();
 })
+$('[name="spendData"]').click(function(){ 
+     window.location.href="busSeat.html?Sd="+$('#sPlace').text()+"&Ed="+$('#ePlace').text()+"&Dp="+$('#recive_day').text(); 
+ });
     </script>
 </body>
 </html>
