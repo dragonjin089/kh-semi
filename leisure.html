@@ -932,10 +932,14 @@ $('.nav-login').click(function(){
 
 // 레저 시작
 $(document).on('click', '.area-title', function (e) {
+      let les = $(this).html();
+      $('.asd').html(les);
 			e.preventDefault();
 			if ($(this).hasClass("active") == true) {
 				$(this).children().css('display', 'none')
 				$(this).removeClass("active");
+        $('.asd').children().css('display','none');
+        $('.asd').removeClass("active");
 			} else {
 				$(this).addClass("active");
 				$('.area-title').not($(this)).children().css('display', 'none');
@@ -947,7 +951,7 @@ $(document).on('click', '.area-title', function (e) {
 			if ($(this).hasClass("active") == true) {
 				$(this).children().removeClass("active");
 			}
-		})
+		});
 
 		$(document).on('click', '.toolbar-content', function (e) {
 			e.preventDefault();
@@ -960,13 +964,9 @@ $(document).on('click', '.area-title', function (e) {
 			$('.area-inner-content').click(function(){
 				let res = $(this).html();
 				$('.zxc').html(res);
-        
 			});
 		});
-    $('.area-title').click(function(){
-      let les = $(this).html();
-      $('.asd').html(les);
-    });
+   
      
 </script>
 </html>
